@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material">
+        <!-- Customize your theme here. -->
+
+        <item name="android:colorPrimary">@color/green_light</item>
+        <!-- darker variant for the status bar and contextual app bars -->
+        <item name="android:colorPrimaryDark">@color/green_dark</item>
+
+        <!-- theme UI controls like checkboxes and text fields -->
+        <item name="android:colorAccent">@android:color/white</item>
+    </style>
+
+</resources>

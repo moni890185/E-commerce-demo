@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="background">#424242</color>
+
+    <color name="card_view_price_holder_background">#1f000000</color>
+
     <color name="grey_fab_dark">#757575</color>
     <color name="grey_fab_light">#bdbdbd</color>
     <color name="green_dark">#4CAF50</color>
@@ -9,7 +11,14 @@
     <color name="green_light_lighter">#F1F8E9</color>
 
     <color name="white_grey">#eeeeee</color>
-    <color name="black_grey">#9e9e9e</color>
+    <color name="black_grey">#3e3e3e</color>
+   <!-- action bar-->
+    <color name="dark_grey">#222326</color>
+    <!--darker date bar -->
+    <color name="darker_grey">#121314</color>
+    <!-- official background-->
+    <color name="background">#1A1A1A</color>
+
     <color name="fab_color_1">@color/grey_fab_light</color>
     <color name="fab_color_1_muted">@color/white_grey</color>
     <color name="fab_color_2">@color/white_grey</color>

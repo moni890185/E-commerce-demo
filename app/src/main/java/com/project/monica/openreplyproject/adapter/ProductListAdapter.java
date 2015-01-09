@@ -3,6 +3,7 @@ package com.project.monica.openreplyproject.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.project.monica.openreplyproject.R;
+import com.project.monica.openreplyproject.model.Product;
+
+import java.util.ArrayList;
 
 /**
  * Created by monica on 17/12/2014.
@@ -18,12 +22,12 @@ import com.project.monica.openreplyproject.R;
 public class ProductListAdapter extends RecyclerView.Adapter {
 
     // Fields
-    private int[] mDataSet;
+    private ArrayList<Product> mDataSet;
     private Context mContext;
 
 
     // Constructor
-    public ProductListAdapter(Context context, int[] dataset) {
+    public ProductListAdapter(Context context, ArrayList<Product> dataset) {
         mDataSet = dataset;
         mContext = context;
     }
@@ -38,15 +42,20 @@ public class ProductListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder mHolder = (ViewHolder) holder;
+        Log.d("Monica", "onBindViewHolder - price: " + mDataSet.get(position).getPrice());
+        Double price = mDataSet.get(position).getPrice();
+        mHolder.getCardPriceView().setText("£ "+ price.toString());
 
-        int img_id = mDataSet[position];
-        mHolder.getCardImageView().setImageResource(img_id);
+        Log.d("Monica", "onBindViewHolder - img_id: " + mDataSet.get(position).getImageDrawable());
+        int imgId = mDataSet.get(position).getImageDrawable();
+        mHolder.getCardImageView().setImageResource(imgId);
+
+
     }
 
     @Override
-    public int
-    getItemCount() {
-        return mDataSet.length;
+    public int getItemCount() {
+        return mDataSet.size();
     }
 
 

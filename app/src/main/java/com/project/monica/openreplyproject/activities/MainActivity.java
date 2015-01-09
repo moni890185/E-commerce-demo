@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import com.project.monica.openreplyproject.R;
 import com.project.monica.openreplyproject.adapter.ProductListAdapter;
 import com.project.monica.openreplyproject.customrecyclerview.AutofitRecyclerView;
+import com.project.monica.openreplyproject.model.Product;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends Activity {
@@ -17,7 +20,7 @@ public class MainActivity extends Activity {
     private ProductListAdapter mProductListAdapter;
 
     /* dataset with the images to insert in the cards */
-    private int[] mDataset;
+    private ArrayList<Product> mDataset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +81,18 @@ public class MainActivity extends Activity {
     }
 
     private void initDataset() {
-        mDataset = new int[]{R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2, R.drawable.img_card_view_woman1, R.drawable.img_card_view_women, R.drawable.img_card_view_shoes, R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2};
+
+
+        mDataset = new ArrayList<Product>();
+        int[] imgDrawables = new int[]{R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2, R.drawable.img_card_view_woman1, R.drawable.img_card_view_women, R.drawable.img_card_view_shoes, R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2};
+        double[] productPrices = new double[]{130.00 ,120.00, 115.00, 135.00,110.00, 171.00, 135.00, 143.00, 122.00, 160.00, 123.00, 122.00, 102.00};
+        Product[] products = new Product[imgDrawables.length];
+        for(int i = 0; i< imgDrawables.length && i < productPrices.length;i++)
+          {
+            Product p = new Product(productPrices[i],imgDrawables[i]);
+            mDataset.add(p);
+          }
+
     }
 
     private void initAdapter() {

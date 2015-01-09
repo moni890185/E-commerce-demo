@@ -67,5 +67,7 @@ public class AutofitRecyclerView extends RecyclerView {
 
         // to call onMeasure
         requestLayout();
+        // to call on Draw
+        invalidate();
     }
 }

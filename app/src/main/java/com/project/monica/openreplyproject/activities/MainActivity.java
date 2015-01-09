@@ -17,7 +17,11 @@ import com.project.monica.openreplyproject.listener.ScaleGestureListener;
 public class MainActivity extends Activity implements ScaleGestureListener.ScalePinchListener {
     // private CardView mCardViewLeft;
     private AutofitRecyclerView mRecyclerView;
+
+    // Pinch Gesture Detector Obj
     private ScaleGestureDetector mScaleGestureDetector;
+
+    // Adapter
     private ProductListAdapter mProductListAdapter;
 
     /* dataset with the images to insert in the cards */
@@ -98,7 +102,7 @@ public class MainActivity extends Activity implements ScaleGestureListener.Scale
 
     private void initScaleGesture() {
         ScaleGestureListener mScaleGestureListener = new ScaleGestureListener();
-        // the adapter implements the listener
+        // the adapter and the activity itself implement this listener
         mScaleGestureListener.setScalePinchListener(mProductListAdapter, this);
         mScaleGestureDetector = new ScaleGestureDetector(this, mScaleGestureListener);
     }

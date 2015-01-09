@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
    <!-- Card View Product List-->
-    <dimen name="card_view_height">260dp</dimen>
+    <dimen name="card_view_height">240dp</dimen>
     <dimen name="card_view_width">155dp</dimen>
     <dimen name="card_view_height_half">180dp</dimen>
     <dimen name="card_view_width_half">100dp</dimen>

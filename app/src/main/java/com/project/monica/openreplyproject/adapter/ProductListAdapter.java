@@ -61,8 +61,7 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
             // Card Price container size
             int cardPriceContainerWidth =mHolder.getCardPriceContainerView().getWidth();
             int cardPriceContainerHeight = mHolder.getCardPriceContainerView().getHeight();
-            mHolder.getCardPriceContainerView().setLayoutParams(new FrameLayout.LayoutParams(cardPriceContainerWidth - 20, cardPriceContainerHeight - 20));
-
+            mHolder.getCardPriceContainerView().setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, cardPriceContainerHeight));
         }
 
     }
@@ -99,7 +98,6 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
             mCardImageView = (ImageView) itemView.findViewById(R.id.img_card_view);
             mCardPriceView = (TextView) itemView.findViewById(R.id.card_price_text);
             mCardPriceLayout = (LinearLayout) itemView.findViewById(R.id.card_price_container);
-
         }
 
         public CardView getCardView() {
@@ -114,6 +112,9 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
             return mCardPriceLayout;
         }
 
+        public TextView getCardPriceView() {
+            return mCardPriceView;
+        }
     }
 
 }

@@ -35,6 +35,5 @@ public class ScaleGestureListener extends ScaleGestureDetector.SimpleOnScaleGest
         mScalePinchActivityListener.onScaleAction(matrix);
         mScalePinchAdapterListener.onScaleAction(matrix);
         return true;
-
     }
 }

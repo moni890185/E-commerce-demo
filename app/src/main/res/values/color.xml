@@ -1,24 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="white_grey">#eeeeee</color>
+    <color name="black_grey">#3e3e3e</color>
 
-    <color name="card_view_price_holder_background">#1f000000</color>
+    <!-- ecru -->
+    <color name="ecru">#FAE8D0</color>
+    <color name="ecru_light_4">#e4e1dc</color>
+    <color name="ecru_light_3">#f4f3f1</color>
+    <color name="ecru_light_2">#f3f3ed</color>
+    <color name="ecru_light_1">#FEFDF9</color>
+    <color name="ecru_light">#BDB6B0</color>
+    <color name="ecru_darker">#e7dbcd</color>
+    <color name="ecru_darker_2">#C0AF93</color>
+    <color name="ecru_darker_3">#968782</color>
+    <color name="ecru_darker_4">#887868</color>
+    <color name="ecru_darkest">#6D6361</color>
 
+    <!-- grey -->
     <color name="grey_fab_dark">#757575</color>
     <color name="grey_fab_light">#bdbdbd</color>
+    <color name="dark_grey">#222326</color>
+    <color name="darker_grey">#121314</color>
+
+    <!--green -->
     <color name="green_dark">#4CAF50</color>
     <color name="green_light">#66BB6A</color>
     <color name="green_light_lighter">#F1F8E9</color>
 
-    <color name="white_grey">#eeeeee</color>
-    <color name="black_grey">#3e3e3e</color>
-   <!-- action bar-->
-    <color name="dark_grey">#222326</color>
-    <!--darker date bar -->
-    <color name="darker_grey">#121314</color>
-    <!-- official background-->
-    <color name="background">#1A1A1A</color>
 
+    <!--darkest date bar -->
+    <color name="date_bar_color">@color/ecru_darkest</color>
+    <!-- action bar-->
+    <color name="action_bar_color">@color/ecru_darker_3</color>
+
+    <!-- official background-->
+    <color name="background">@color/ecru_light_4</color>
+
+    <!--card view -->
+    <color name="card_view_price_holder_background">#4d000000</color>
+
+
+    <!--floating action button -->
     <color name="fab_color_1">@color/grey_fab_light</color>
     <color name="fab_color_1_muted">@color/white_grey</color>
     <color name="fab_color_2">@color/white_grey</color>

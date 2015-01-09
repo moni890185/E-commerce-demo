@@ -1,25 +1,17 @@
 package com.project.monica.openreplyproject.activities;
 
 import android.app.Activity;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
 
 import com.project.monica.openreplyproject.R;
 import com.project.monica.openreplyproject.adapter.ProductListAdapter;
 import com.project.monica.openreplyproject.customrecyclerview.AutofitRecyclerView;
-import com.project.monica.openreplyproject.listener.ScaleGestureListener;
 
 
-public class MainActivity extends Activity implements ScaleGestureListener.ScalePinchListener {
+public class MainActivity extends Activity {
     // private CardView mCardViewLeft;
     private AutofitRecyclerView mRecyclerView;
-
-    // Pinch Gesture Detector Obj
-    private ScaleGestureDetector mScaleGestureDetector;
 
     // Adapter
     private ProductListAdapter mProductListAdapter;
@@ -35,7 +27,6 @@ public class MainActivity extends Activity implements ScaleGestureListener.Scale
 
         initDataset();
         initAdapter();
-        initScaleGesture();
 
         mRecyclerView = (AutofitRecyclerView) findViewById(R.id.recycler_view_product_list);
         // RecyclerView can perform several optimizations if it can know in advance that changes in adapter content cannot change the size of the RecyclerView itself.
@@ -86,12 +77,6 @@ public class MainActivity extends Activity implements ScaleGestureListener.Scale
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        mScaleGestureDetector.onTouchEvent(ev);
-        return true;
-    }
-
     private void initDataset() {
         mDataset = new int[]{R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2, R.drawable.img_card_view_woman1, R.drawable.img_card_view_women, R.drawable.img_card_view_shoes, R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2};
     }
@@ -100,16 +85,5 @@ public class MainActivity extends Activity implements ScaleGestureListener.Scale
         mProductListAdapter = new ProductListAdapter(this, mDataset);
     }
 
-    private void initScaleGesture() {
-        ScaleGestureListener mScaleGestureListener = new ScaleGestureListener();
-        // the adapter and the activity itself implement this listener
-        mScaleGestureListener.setScalePinchListener(mProductListAdapter, this);
-        mScaleGestureDetector = new ScaleGestureDetector(this, mScaleGestureListener);
-    }
 
-    @Override
-    public void onScaleAction(Matrix matrix) {
-        Log.d("Monica", "Changing the dimen of column Width");
-        mRecyclerView.refreshColumnWidth((int) getResources().getDimension(R.dimen.card_view_width_half));
-    }
 }

@@ -1,29 +1,24 @@
 package com.project.monica.openreplyproject.adapter;
 
 import android.content.Context;
-import android.graphics.Matrix;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.project.monica.openreplyproject.R;
-import com.project.monica.openreplyproject.listener.ScaleGestureListener;
 
 /**
  * Created by monica on 17/12/2014.
  */
-public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGestureListener.ScalePinchListener {
+public class ProductListAdapter extends RecyclerView.Adapter {
 
     // Fields
     private int[] mDataSet;
-    private Matrix mMatrix = null;
     private Context mContext;
 
 
@@ -43,27 +38,9 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder mHolder = (ViewHolder) holder;
+
         int img_id = mDataSet[position];
         mHolder.getCardImageView().setImageResource(img_id);
-        if (mMatrix != null) {
-            Log.d("Monica", "NOT USING MATRIX - but resizing");
-            // Card view size
-            float cardWidth = mContext.getResources().getDimension(R.dimen.card_view_width_half);
-            float cardHeight = mContext.getResources().getDimension(R.dimen.card_view_height_half);
-            mHolder.getCardView().setLayoutParams(new FrameLayout.LayoutParams((int)cardWidth, (int)cardHeight));
-
-            // Image size
-            int imgWidth = mHolder.getCardImageView().getWidth();
-            int imgHeight = mHolder.getCardImageView().getHeight();
-            mHolder.getCardImageView().setMaxWidth(imgWidth - 20);
-            mHolder.getCardImageView().setMaxHeight(imgHeight - 20);
-
-            // Card Price container size
-            int cardPriceContainerWidth =mHolder.getCardPriceContainerView().getWidth();
-            int cardPriceContainerHeight = mHolder.getCardPriceContainerView().getHeight();
-            mHolder.getCardPriceContainerView().setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, cardPriceContainerHeight));
-        }
-
     }
 
     @Override
@@ -73,16 +50,7 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
     }
 
 
-    @Override
-    public void onScaleAction(Matrix matrix) {
-        Log.d("Monica", "ProductListAdapter - onScaleAction called");
-        mMatrix = matrix;
-        notifyDataSetChanged();
-    }
-
-
     // ViewHolder
-
     private static class ViewHolder extends RecyclerView.ViewHolder {
 
 

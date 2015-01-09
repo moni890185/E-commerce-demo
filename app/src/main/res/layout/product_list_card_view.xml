@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:src="@drawable/img_card_view"
             android:layout_height="match_parent"
-            android:scaleType="matrix"
+            android:scaleType="centerCrop"
             android:id="@+id/img_card_view" />
 
         <LinearLayout

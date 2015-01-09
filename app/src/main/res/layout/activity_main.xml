@@ -14,14 +14,4 @@
        android:columnWidth="@dimen/column_width"
        android:layout_height="match_parent"/>
 
-    <View
-        android:id="@+id/transparent_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@id/recycler_view_product_list"
-        android:layout_alignBottom="@id/recycler_view_product_list"
-        android:layout_alignRight="@id/recycler_view_product_list"
-        android:layout_alignLeft="@id/recycler_view_product_list"
-        />
-
 </RelativeLayout>

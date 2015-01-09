@@ -5,23 +5,23 @@ package com.project.monica.openreplyproject.model;
  */
 public class Product {
 
-    private Double price;
+    private Integer price;
     private Integer imageDrawable;
 
     /**
      * @param price         product price
      * @param imageDrawable id drawable
      */
-    public Product(Double price, Integer imageDrawable) {
+    public Product(Integer price, Integer imageDrawable) {
         this.price = price;
         this.imageDrawable = imageDrawable;
     }
 
-    public Double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

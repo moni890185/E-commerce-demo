@@ -81,11 +81,9 @@ public class MainActivity extends Activity {
     }
 
     private void initDataset() {
-
-
         mDataset = new ArrayList<Product>();
         int[] imgDrawables = new int[]{R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2, R.drawable.img_card_view_woman1, R.drawable.img_card_view_women, R.drawable.img_card_view_shoes, R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2};
-        double[] productPrices = new double[]{130.00 ,120.00, 115.00, 135.00,110.00, 171.00, 135.00, 143.00, 122.00, 160.00, 123.00, 122.00, 102.00};
+        int[] productPrices = new int[]{130 ,120, 115, 135,110, 171, 135, 143, 122, 160, 123, 122, 102};
         Product[] products = new Product[imgDrawables.length];
         for(int i = 0; i< imgDrawables.length && i < productPrices.length;i++)
           {

@@ -43,7 +43,7 @@ public class ProductListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder mHolder = (ViewHolder) holder;
         Log.d("Monica", "onBindViewHolder - price: " + mDataSet.get(position).getPrice());
-        Double price = mDataSet.get(position).getPrice();
+        Integer price = mDataSet.get(position).getPrice();
         mHolder.getCardPriceView().setText("£ "+ price.toString());
 
         Log.d("Monica", "onBindViewHolder - img_id: " + mDataSet.get(position).getImageDrawable());

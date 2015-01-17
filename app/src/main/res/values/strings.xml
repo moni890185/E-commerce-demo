@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">E-commerce App</string>
+    <string name="app_name">Snob Sine Nobilitate</string>
     <string name="action_settings">Settings</string>
     <string name="price_card_view">£ 130.00</string>
-
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_product_detail">ProductDetailActivity</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_product_list">ProductListActivity</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="title_activity_contact_us">ContactUs</string>
+    <string name="title_section1">About</string>
+    <string name="title_section2">Collection</string>
+    <string name="title_section3">Stores</string>
+    <string name="title_section4">Contact us</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="title_activity_store_finder">StoreFinderActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

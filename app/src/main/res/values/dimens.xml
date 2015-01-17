@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-   <!-- Card View Product List-->
+    <!-- Card View Product List -->
     <dimen name="card_view_height">240dp</dimen>
     <dimen name="card_view_width">155dp</dimen>
     <dimen name="card_view_height_half">180dp</dimen>
@@ -13,7 +15,6 @@
     <dimen name="card_view_corner_radius">2dp</dimen>
     <dimen name="card_view_price_holder_height">40dp</dimen>
     <dimen name="column_width">@dimen/card_view_width</dimen>
-
-
+    <dimen name="navigation_drawer_width">240dp</dimen>
 
 </resources>

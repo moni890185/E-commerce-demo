@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-   <com.project.monica.openreplyproject.customrecyclerview.AutofitRecyclerView
+   <com.project.monica.snobsinenobilitate.customrecyclerview.AutofitRecyclerView
        android:id="@+id/recycler_view_product_list"
        android:layout_width="match_parent"
        android:columnWidth="@dimen/column_width"

@@ -25,23 +25,23 @@
             android:label="@string/title_activity_product_detail" >
         </activity>
         <activity
-            android:name=".activities.ProductListActivity"
+            android:name=".uselessactivities.ProductListActivity"
             android:label="@string/title_activity_product_list" >
         </activity>
         <activity
-            android:name=".activities.AboutUsActivity"
+            android:name=".uselessactivities.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
         </activity>
         <activity
-            android:name=".activities.ContactUsActivity"
+            android:name=".uselessactivities.ContactUsActivity"
             android:label="@string/title_activity_contact_us" >
         </activity>
         <activity
-            android:name=".activities.StoreFinderActivity"
+            android:name=".uselessactivities.StoreFinderActivity"
             android:label="@string/title_activity_store_finder" >
         </activity>
         <activity
-            android:name=".activities.HomeActivity"
+            android:name=".uselessactivities.HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
     </application>

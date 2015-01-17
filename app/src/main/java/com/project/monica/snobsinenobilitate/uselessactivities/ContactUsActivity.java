@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.activities;
+package com.project.monica.snobsinenobilitate.uselessactivities;
 
 import android.app.Activity;
 import android.os.Bundle;

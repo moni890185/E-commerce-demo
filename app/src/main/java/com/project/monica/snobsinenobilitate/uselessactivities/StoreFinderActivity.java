@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.activities;
+package com.project.monica.snobsinenobilitate.uselessactivities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,19 +7,19 @@ import android.view.MenuItem;
 
 import com.project.monica.snobsinenobilitate.R;
 
-public class AboutUsActivity extends Activity {
+public class StoreFinderActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about_us);
+        setContentView(R.layout.activity_store_finder);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_about_us, menu);
+        getMenuInflater().inflate(R.menu.menu_store_finder, menu);
         return true;
     }
 

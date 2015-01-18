@@ -55,6 +55,8 @@ public class ProductListAdapter extends RecyclerView.Adapter {
         Double price = mDataSet.get(position).getPrice();
         mHolder.getCardPriceView().setText("£ "+ price.toString());
 
+        mHolder.getCardDescriptionView().setText(mDataSet.get(position).getImageDescription());
+
         Timber.d("onBindViewHolder - img_id: " + mDataSet.get(position).getImageDrawable());
         int imgId = mDataSet.get(position).getImageDrawable();
         mHolder.getCardImageView().setImageResource(imgId);
@@ -81,6 +83,7 @@ public class ProductListAdapter extends RecyclerView.Adapter {
         private final CardView mCardView;
         private final ImageView mCardImageView;
         private final TextView mCardPriceView;
+        private final TextView mCardDescriptionView;
         private final LinearLayout mCardPriceLayout;
 
         public ViewHolder(View itemView) {
@@ -88,8 +91,10 @@ public class ProductListAdapter extends RecyclerView.Adapter {
             mCardView = (CardView) itemView.findViewById(R.id.card_view);
             mCardImageView = (ImageView) itemView.findViewById(R.id.img_card_view);
             mCardPriceView = (TextView) itemView.findViewById(R.id.card_price_text);
+            mCardDescriptionView = (TextView) itemView.findViewById(R.id.card_description_text);
             mCardPriceLayout = (LinearLayout) itemView.findViewById(R.id.card_price_container);
         }
+        public TextView getCardDescriptionView(){return  mCardDescriptionView;}
 
         public CardView getCardView() {
             return mCardView;

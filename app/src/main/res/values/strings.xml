@@ -3,9 +3,9 @@
 
     <string name="app_name">Snob Sine Nobilitate</string>
     <string name="action_settings">Settings</string>
-    <string name="price_card_view">£ 130.00</string>
+    <string name="price_card_view">130.00 €</string>
     <string name="title_activity_nav_drawer">@string/app_name</string>
-    <string name="product_detail_description">Cotone, spandex, Vintage washed, Cucitura posteriore in contrasto.</string>
+    <string name="product_detail_description">Chinos with a structured weave in cotton. Casual cut, logo button and concealed zip fastening, two side pockets, a coin pocket, two buttoned welt pockets at the back, contrasting waistband, belt loops and a leather tag embossed with the brand name and logo.</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_product_detail">ProductDetailActivity</string>
     <string name="title_activity_base">BaseActivity</string>

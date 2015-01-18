@@ -30,9 +30,9 @@ public class ProductListFragment extends Fragment implements ProductListAdapter.
     private AutofitRecyclerView mRecyclerView;
 
     // Mock
-    private static int[] imgDrawables = new int[]{R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2, R.drawable.img_card_view_woman1, R.drawable.img_card_view_women, R.drawable.img_card_view_shoes, R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2};
-    private static double[] productPrices = new double[]{130, 120, 115, 135, 110, 171, 135, 143, 122, 160, 123, 122, 102};
-
+    private static int[] imgDrawables = new int[]{R.drawable.img_card_view, R.drawable.img_card_view_jacket, R.drawable.img_card_view_man, R.drawable.img_card_view_man1, R.drawable.img_card_view_man2, R.drawable.img_card_view_woman1, R.drawable.img_card_view_women, R.drawable.img_card_view_shoes};
+    private static double[] productPrices = new double[]{130, 120, 115, 135, 110, 171, 135, 143};
+    private static String[] productDescription = new String[]{"Textured chinos","Nappy jacket","Dark sweater","Slim-fit shirt", "Silk shirt","Long suede cape","Cape coat","Taupe mocassin" };
     // Adapter
     private ProductListAdapter mProductListAdapter;
 
@@ -110,7 +110,7 @@ public class ProductListFragment extends Fragment implements ProductListAdapter.
         // MOCK!!!!
         mDataset = new ArrayList<Product>();
         for (int i = 0; i < imgDrawables.length && i < productPrices.length; i++) {
-            Product p = new Product(productPrices[i], imgDrawables[i]);
+            Product p = new Product(productPrices[i], imgDrawables[i], productDescription[i]);
             mDataset.add(p);
         }
     }

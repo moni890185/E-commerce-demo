@@ -7,14 +7,25 @@ public class Product {
 
     private Double price;
     private Integer imageDrawable;
+    private String imageDescription;
 
     /**
-     * @param price         product price
-     * @param imageDrawable id drawable
+     * @param price            product price
+     * @param imageDrawable    id drawable
+     * @param imageDescription description item
      */
-    public Product(Double price, Integer imageDrawable) {
+    public Product(Double price, Integer imageDrawable, String imageDescription) {
         this.price = price;
         this.imageDrawable = imageDrawable;
+        this.imageDescription = imageDescription;
+    }
+
+    public String getImageDescription() {
+        return imageDescription;
+    }
+
+    public void setImageDescription(String imageDescription) {
+        this.imageDescription = imageDescription;
     }
 
     public Double getPrice() {

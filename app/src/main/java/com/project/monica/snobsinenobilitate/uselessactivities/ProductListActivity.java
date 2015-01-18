@@ -52,8 +52,8 @@ public class ProductListActivity extends Activity {
         // MOCK!!!!
         mDataset = new ArrayList<Product>();
         for (int i = 0; i < imgDrawables.length && i < productPrices.length; i++) {
-            Product p = new Product(productPrices[i], imgDrawables[i]);
-            mDataset.add(p);
+//            Product p = new Product(productPrices[i], imgDrawables[i], i);
+//            mDataset.add(p);
         }
     }
 

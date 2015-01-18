@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="Casual Jeans Ref. 123456789"
+                    android:text="Textured chinos - Ref. 0012/002"
                     android:layout_width="wrap_content"
 
                     android:paddingTop="@dimen/activity_vertical_margin"

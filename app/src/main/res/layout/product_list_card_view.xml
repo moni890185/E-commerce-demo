@@ -24,14 +24,32 @@
         <LinearLayout
             android:id="@+id/card_price_container"
             android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
             android:layout_gravity="bottom"
             android:background="@color/card_view_price_holder_background"
             android:layout_height="@dimen/card_view_price_holder_height">
 
+
+            <TextView
+                android:id="@+id/card_description_text"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingTop="1dp"
+                android:textColor="@android:color/white"
+                android:text="Textured chinos"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
             <TextView
                 android:id="@+id/card_price_text"
                 android:gravity="center"
-                android:layout_gravity="center"
                 android:textColor="@android:color/white"
                 android:text="@string/price_card_view"
                 android:shadowColor="@android:color/black"

@@ -1,12 +1,14 @@
 package com.project.monica.snobsinenobilitate.activities;
 
+import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toolbar;
 
 import com.project.monica.snobsinenobilitate.R;
 import com.project.monica.snobsinenobilitate.fragments.AboutFragment;
@@ -15,10 +17,13 @@ import com.project.monica.snobsinenobilitate.fragments.HomeFragment;
 import com.project.monica.snobsinenobilitate.fragments.NavigationDrawerFragment;
 import com.project.monica.snobsinenobilitate.fragments.ProductListFragment;
 import com.project.monica.snobsinenobilitate.fragments.StoreFinderFragment;
+import com.project.monica.snobsinenobilitate.model.Product;
 
-public class NavDrawerActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class NavDrawerActivity extends FragmentActivity
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, ProductListFragment.OnFragmentInteractionListener {
 
+    public static final String ID_IMAGE = "ID_IMAGE";
+    public static final String PRICE = "PRICE";
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -33,9 +38,14 @@ public class NavDrawerActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
+       // setting the action bar.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(getString(R.string.app_name));
+        setActionBar(toolbar);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+
         mTitle = getTitle();
 
         // Set up the drawer.
@@ -44,12 +54,14 @@ public class NavDrawerActivity extends ActionBarActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
-// MENU{
-//        HOME,
-//        COLLECTION,
-//        STORES,
-//        CONTACT_US,
-//        ABOUT }
+        //   MENU {
+        //          HOME,
+        //          COLLECTION,
+        //          STORES,
+        //          CONTACT_US,
+        //          ABOUT
+        //        }
+
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
@@ -94,19 +106,22 @@ public class NavDrawerActivity extends ActionBarActivity
             case 1:
                 mTitle = getString(R.string.title_section1);
                 break;
+
             case 2:
                 mTitle = getString(R.string.title_section2);
                 break;
+
             case 3:
                 mTitle = getString(R.string.title_section3);
                 break;
+
             case 4:
                 mTitle = getString(R.string.title_section4);
         }
     }
 
     public void restoreActionBar() {
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
@@ -141,44 +156,16 @@ public class NavDrawerActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-//    /**
-//     * A placeholder fragment containing a simple view.
-//     */
-//    public static class PlaceholderFragment extends Fragment {
-//        /**
-//         * The fragment argument representing the section number for this
-//         * fragment.
-//         */
-//        private static final String ARG_SECTION_NUMBER = "section_number";
-//
-//        /**
-//         * Returns a new instance of this fragment for the given section
-//         * number.
-//         */
-//        public static PlaceholderFragment newInstance(int sectionNumber) {
-//            PlaceholderFragment fragment = new PlaceholderFragment();
-//            Bundle args = new Bundle();
-//            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-//            fragment.setArguments(args);
-//            return fragment;
-//        }
-//
-//        public PlaceholderFragment() {
-//        }
-//
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                                 Bundle savedInstanceState) {
-//            View rootView = inflater.inflate(R.layout.fragment_nav_drawer, container, false);
-//            return rootView;
-//        }
-//
-//        @Override
-//        public void onAttach(Activity activity) {
-//            super.onAttach(activity);
-//            ((NavDrawerActivity) activity).onSectionAttached(
-//                    getArguments().getInt(ARG_SECTION_NUMBER));
-//        }
-//    }
+    @Override
+    public void onFragmentInteraction(Product product) {
+        // ProductListFragment - onItemClicked
+        //launching ProductDetailActivity
+        Intent i = new Intent();
+        i.putExtra(ID_IMAGE,product.getImageDrawable());
+        i.putExtra(PRICE,product.getPrice());
+        i.setClass(this, ProductDetailActivity.class);
+        startActivity(i);
+
+    }
 
 }

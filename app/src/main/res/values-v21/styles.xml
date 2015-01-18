@@ -1,8 +1,13 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat">
+    <style name="AppTheme" parent="android:Theme.Material">
 
+        <item name="android:windowNoTitle">true</item>
+        <!--We will be using the toolbar so no need to show ActionBar-->
+        <item name="android:windowActionBar">false</item>
+        <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
+        <!-- colorPrimary is used for the default action bar background -->
     <item name="android:windowContentTransitions">true</item>
         <!-- Customize your theme here. -->
 
@@ -12,6 +17,11 @@
 
         <!-- theme UI controls like checkboxes and text fields -->
         <item name="android:colorAccent">@android:color/white</item>
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppSplashTheme" parent="@android:style/Theme.Holo.NoActionBar">
+        <item name="android:background">@drawable/placeholder_splash_screen</item>
     </style>
 
 </resources>

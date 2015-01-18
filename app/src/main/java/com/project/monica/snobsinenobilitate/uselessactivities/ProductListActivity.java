@@ -1,25 +1,20 @@
 package com.project.monica.snobsinenobilitate.uselessactivities;
 
 import android.app.Activity;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 
 import com.project.monica.snobsinenobilitate.R;
 import com.project.monica.snobsinenobilitate.adapter.ProductListAdapter;
 import com.project.monica.snobsinenobilitate.customrecyclerview.AutofitRecyclerView;
-import com.project.monica.snobsinenobilitate.listener.ScaleGestureListener;
 import com.project.monica.snobsinenobilitate.model.Product;
 
 import java.util.ArrayList;
 
-import timber.log.Timber;
 
-
-public class ProductListActivity extends Activity implements ScaleGestureListener.ScalePinchListener {
+public class ProductListActivity extends Activity {
     // private CardView mCardViewLeft;
     private AutofitRecyclerView mRecyclerView;
 
@@ -43,10 +38,6 @@ public class ProductListActivity extends Activity implements ScaleGestureListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initDataset();
-        initAdapter();
-        initScaleGesture();
-
-        mTransparentView = findViewById(R.id.transparent_view);
         mRecyclerView = (AutofitRecyclerView) findViewById(R.id.recycler_view_product_list);
         // RecyclerView can perform several optimizations if it can know in advance that changes in adapter content cannot change the size of the RecyclerView itself.
         mRecyclerView.setHasFixedSize(true);
@@ -56,15 +47,6 @@ public class ProductListActivity extends Activity implements ScaleGestureListene
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        if (mScaleGestureDetector.onTouchEvent(ev)) {
-            Timber.d("scale gesture detector reveled a pinch -  on the transparent view found!!!!!!!");
-            return mTransparentView.onTouchEvent(ev);
-        }
-        Timber.d("scale gesture that is not a pinch zoom found!!!!!!!");
-        return mRecyclerView.onTouchEvent(ev);
-    }
 
     private void initDataset() {
         // MOCK!!!!
@@ -75,20 +57,6 @@ public class ProductListActivity extends Activity implements ScaleGestureListene
         }
     }
 
-    private void initAdapter() {
-        mProductListAdapter = new ProductListAdapter(this, mDataset);
-    }
 
-    private void initScaleGesture() {
-        ScaleGestureListener mScaleGestureListener = new ScaleGestureListener();
-        // the adapter and the activity itself implement this listener
-        mScaleGestureListener.setScalePinchListener(mProductListAdapter, this);
-        mScaleGestureDetector = new ScaleGestureDetector(this, mScaleGestureListener);
-    }
 
-    @Override
-    public void onScaleAction(Matrix matrix) {
-        Timber.d("Changing the dimen of column Width");
-        mRecyclerView.refreshColumnWidth((int) getResources().getDimension(R.dimen.card_view_width_half));
-    }
 }

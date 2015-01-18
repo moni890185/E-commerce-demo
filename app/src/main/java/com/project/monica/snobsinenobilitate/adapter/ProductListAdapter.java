@@ -7,13 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.project.monica.snobsinenobilitate.R;
-import com.project.monica.snobsinenobilitate.listener.ScaleGestureListener;
 import com.project.monica.snobsinenobilitate.model.Product;
 
 import java.util.ArrayList;
@@ -23,18 +21,24 @@ import timber.log.Timber;
 /**
  * Created by monica on 17/12/2014.
  */
-public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGestureListener.ScalePinchListener {
+public class ProductListAdapter extends RecyclerView.Adapter {
 
     // Fields
     private ArrayList<Product> mDataSet;
     private Matrix mMatrix = null;
     private Context mContext;
+    private OnCustomItemClickListener mItemListener;
 
+    public interface OnCustomItemClickListener
+    {
+        void onClick(int position);
+    }
 
     // Constructor
-    public ProductListAdapter(Context context, ArrayList<Product> dataset) {
+    public ProductListAdapter(Context context, ArrayList<Product> dataset, OnCustomItemClickListener itemListener) {
         mDataSet = dataset;
         mContext = context;
+        mItemListener = itemListener;
     }
 
     @Override
@@ -45,7 +49,7 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         ViewHolder mHolder = (ViewHolder) holder;
         Timber.d("onBindViewHolder - price: " + mDataSet.get(position).getPrice());
         Double price = mDataSet.get(position).getPrice();
@@ -54,40 +58,18 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
         Timber.d("onBindViewHolder - img_id: " + mDataSet.get(position).getImageDrawable());
         int imgId = mDataSet.get(position).getImageDrawable();
         mHolder.getCardImageView().setImageResource(imgId);
-
-
-        if (mMatrix != null) {
-            Timber.d("NOT USING MATRIX - but resizing");
-            // Card view size
-            float cardWidth = mContext.getResources().getDimension(R.dimen.card_view_width_half);
-            float cardHeight = mContext.getResources().getDimension(R.dimen.card_view_height_half);
-            mHolder.getCardView().setLayoutParams(new FrameLayout.LayoutParams((int)cardWidth, (int)cardHeight));
-
-            // Image size
-            int imgWidth = mHolder.getCardImageView().getWidth();
-            int imgHeight = mHolder.getCardImageView().getHeight();
-            mHolder.getCardImageView().setMaxWidth(imgWidth - 20);
-            mHolder.getCardImageView().setMaxHeight(imgHeight - 20);
-
-            // Card Price container size
-            int cardPriceContainerHeight = mHolder.getCardPriceContainerView().getHeight();
-            mHolder.getCardPriceContainerView().setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, cardPriceContainerHeight));
-        }
-
+        mHolder.getCardView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mItemListener.onClick(position);
+            }
+        });
     }
 
     @Override
     public int
     getItemCount() {
         return mDataSet.size();
-    }
-
-
-    @Override
-    public void onScaleAction(Matrix matrix) {
-        Timber.d("ProductListAdapter - onScaleAction called");
-        mMatrix = matrix;
-        notifyDataSetChanged();
     }
 
 

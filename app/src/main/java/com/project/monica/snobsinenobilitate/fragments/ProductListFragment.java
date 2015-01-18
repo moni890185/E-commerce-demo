@@ -1,7 +1,6 @@
 package com.project.monica.snobsinenobilitate.fragments;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
 // * Use the {@link ProductListFragment#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class ProductListFragment extends Fragment {
+public class ProductListFragment extends Fragment implements ProductListAdapter.OnCustomItemClickListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String TITLE = "title";
 
@@ -43,7 +42,7 @@ public class ProductListFragment extends Fragment {
 
     private int mTitle;
 
-//    private OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener mListener;
 
     /**
      * Use this factory method to create a new instance of
@@ -89,28 +88,21 @@ public class ProductListFragment extends Fragment {
         return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-    }
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-//        try {
-//            mListener = (OnFragmentInteractionListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(activity.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
+        try {
+            mListener = (OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-//        mListener = null;
+        mListener = null;
     }
 
 
@@ -124,7 +116,15 @@ public class ProductListFragment extends Fragment {
     }
 
     private void initAdapter() {
-        mProductListAdapter = new ProductListAdapter(getActivity(), mDataset);
+        mProductListAdapter = new ProductListAdapter(getActivity(), mDataset, this);
+    }
+
+    @Override
+    public void onClick(int position) {
+        if(mListener!=null) {
+            mListener.onFragmentInteraction(mDataset.get(position));
+        }
+
     }
 
     /**
@@ -137,9 +137,8 @@ public class ProductListFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-//    public interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        public void onFragmentInteraction(Uri uri);
-//    }
+    public interface OnFragmentInteractionListener {
+        public void onFragmentInteraction(Product p);
+    }
 
 }

@@ -13,7 +13,6 @@ import android.widget.Toolbar;
 import com.project.monica.snobsinenobilitate.R;
 import com.project.monica.snobsinenobilitate.fragments.AboutFragment;
 import com.project.monica.snobsinenobilitate.fragments.ContactUsFragment;
-import com.project.monica.snobsinenobilitate.fragments.HomeFragment;
 import com.project.monica.snobsinenobilitate.fragments.NavigationDrawerFragment;
 import com.project.monica.snobsinenobilitate.fragments.ProductListFragment;
 import com.project.monica.snobsinenobilitate.fragments.StoreFinderFragment;
@@ -72,7 +71,7 @@ public class NavDrawerActivity extends FragmentActivity
         {
             case 0:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, HomeFragment.newInstance(position + 1))
+                        .replace(R.id.container, AboutFragment.newInstance(position + 1))
                         .commit();
                 break;
             case 1:
@@ -89,12 +88,6 @@ public class NavDrawerActivity extends FragmentActivity
             case 3:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, ContactUsFragment.newInstance(position + 1))
-                        .commit();
-                break;
-
-            case 4:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, AboutFragment.newInstance(position + 1))
                         .commit();
                 break;
 

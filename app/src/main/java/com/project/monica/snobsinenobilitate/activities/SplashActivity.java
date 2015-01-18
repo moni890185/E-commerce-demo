@@ -26,7 +26,7 @@ public class SplashActivity extends Activity {
                 }
             }
         };
-        h.sendEmptyMessageDelayed(0, 3000);
+        h.sendEmptyMessageDelayed(0, 2000);
     }
 
 

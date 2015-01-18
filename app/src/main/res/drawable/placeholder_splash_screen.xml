@@ -5,4 +5,10 @@
         <bitmap android:src="@drawable/wood_more_contrast"></bitmap>
     </item>
 
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/logo_white_small"></bitmap>
+    </item>
+
     </layer-list>

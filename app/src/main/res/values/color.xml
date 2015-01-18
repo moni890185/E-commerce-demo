@@ -4,6 +4,14 @@
     <color name="white_grey">#eeeeee</color>
     <color name="black_grey">#3e3e3e</color>
 
+
+    <!--red -->
+
+    <color name="red">#ff3232</color>
+
+    <!-- blue -->
+    <color name="blue">#000099</color>
+
     <!-- ecru -->
     <color name="ecru">#FAE8D0</color>
     <color name="ecru_light_4">#e4e1dc</color>

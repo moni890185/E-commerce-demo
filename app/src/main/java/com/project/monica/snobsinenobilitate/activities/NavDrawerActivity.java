@@ -39,10 +39,11 @@ public class NavDrawerActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
        // setting the action bar.
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         toolbar.setTitle(getString(R.string.app_name));
         setActionBar(toolbar);
-
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 

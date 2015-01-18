@@ -13,6 +13,7 @@
     <dimen name="card_view_margin">10dp</dimen>
     <dimen name="card_view_elevation">2dp</dimen>
     <dimen name="card_view_corner_radius">2dp</dimen>
+    <dimen name="card_view_corner_radius_rounded">5dp</dimen>
     <dimen name="card_view_price_holder_height">40dp</dimen>
     <dimen name="column_width">@dimen/card_view_width</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>

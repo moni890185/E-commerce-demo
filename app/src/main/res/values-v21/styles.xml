@@ -23,5 +23,4 @@
     <style name="AppSplashTheme" parent="@android:style/Theme.Holo.NoActionBar">
         <item name="android:background">@drawable/placeholder_splash_screen</item>
     </style>
-
 </resources>

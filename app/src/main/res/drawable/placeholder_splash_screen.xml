@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item>
-        <bitmap android:src="@drawable/wood"></bitmap>
+        <bitmap android:src="@drawable/wood_more_contrast"></bitmap>
     </item>
 
     </layer-list>

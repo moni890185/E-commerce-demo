@@ -20,6 +20,9 @@
     <!-- grey -->
     <color name="grey_fab_dark">#757575</color>
     <color name="grey_fab_light">#bdbdbd</color>
+
+    <color name="less_dark_grey">#38383B</color>
+    <color name="dark_more_grey">#1c1c1d</color>
     <color name="dark_grey">#222326</color>
     <color name="darker_grey">#121314</color>
 
@@ -30,11 +33,11 @@
 
 
     <!--darkest date bar -->
-    <color name="date_bar_color">@color/ecru_darkest</color>
+    <color name="date_bar_color">@color/dark_grey</color>
     <!-- action bar-->
-    <color name="action_bar_color">@color/ecru_darker_3</color>
+    <color name="action_bar_color">@color/dark_more_grey</color>
 
-    <!-- official background-->
+    <!-- official background product list-->
     <color name="background">@color/ecru_light_4</color>
 
     <!--card view -->

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.project.monica.snobsinenobilitate.R;
-import com.project.monica.snobsinenobilitate.adapter.MenuAdapter;
 import com.project.monica.snobsinenobilitate.navigationdrawer.NavDrawerActivityConfiguration;
 import com.project.monica.snobsinenobilitate.navigationdrawer.NavMenuLeaf;
 
@@ -38,8 +37,8 @@ public class HomeActivity extends BaseActivity {
         navDrawerActivityConfiguration.setDrawerShadow(R.drawable.drawer_shadow);
         navDrawerActivityConfiguration.setDrawerOpenDesc(R.string.drawer_open);
         navDrawerActivityConfiguration.setDrawerCloseDesc(R.string.drawer_close);
-        navDrawerActivityConfiguration.setBaseAdapter(
-                new MenuAdapter(this, R.layout.navdrawer_item, new String[]{"text"}));
+//        navDrawerActivityConfiguration.setBaseAdapter(
+//                new MenuAdapter(this, R.layout.navdrawer_item, new String[]{"text"}));
         return navDrawerActivityConfiguration;
     }
 

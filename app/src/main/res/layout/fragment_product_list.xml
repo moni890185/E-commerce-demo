@@ -2,7 +2,7 @@
 
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:background="@color/background"
+android:background="@drawable/wood_more_contrast"
 android:layout_height="match_parent"
 android:paddingLeft="@dimen/activity_horizontal_margin"
 android:paddingRight="@dimen/activity_horizontal_margin"
@@ -14,15 +14,5 @@ tools:context=".MainActivity">
     android:layout_width="match_parent"
     android:columnWidth="@dimen/column_width"
     android:layout_height="match_parent"/>
-
-<View
-    android:id="@+id/transparent_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_alignTop="@id/recycler_view_product_list"
-    android:layout_alignBottom="@id/recycler_view_product_list"
-    android:layout_alignRight="@id/recycler_view_product_list"
-    android:layout_alignLeft="@id/recycler_view_product_list"
-    />
 
 </FrameLayout>

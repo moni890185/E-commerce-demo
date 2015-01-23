@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Matrix;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,16 +26,22 @@ import timber.log.Timber;
  */
 public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGestureListener.ScalePinchListener {
 
+    public interface OnCustomClickListener
+    {
+        void onClick(Integer productId, View view);
+    }
+
     // Fields
     private ArrayList<Product> mDataSet;
     private Matrix mMatrix = null;
     private Context mContext;
-
+    private OnCustomClickListener mClickListener;
 
     // Constructor
-    public ProductListAdapter(Context context, ArrayList<Product> dataset) {
+    public ProductListAdapter(Context context, ArrayList<Product> dataset, OnCustomClickListener listener) {
         mDataSet = dataset;
         mContext = context;
+        mClickListener = listener;
     }
 
     @Override
@@ -47,13 +54,27 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder mHolder = (ViewHolder) holder;
-        Timber.d("onBindViewHolder - price: " + mDataSet.get(position).getPrice());
-        Double price = mDataSet.get(position).getPrice();
-        mHolder.getCardPriceView().setText("£ "+ price.toString());
+        Product product = mDataSet.get(position);
 
-        Timber.d("onBindViewHolder - img_id: " + mDataSet.get(position).getImageDrawable());
-        int imgId = mDataSet.get(position).getImageDrawable();
+        Timber.d("onBindViewHolder - price: " + product.getmPrice());
+
+        String price = product.getmPrice();
+        mHolder.getCardPriceView().setText(TextUtils.concat("£ ", price));
+
+        Timber.d("onBindViewHolder - img_id: " + product.getImageDrawable());
+        int imgId = product.getImageDrawable();
         mHolder.getCardImageView().setImageResource(imgId);
+
+        mHolder.getCardView().setTag(product.getId());
+        mHolder.getCardView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer productId = (Integer)v.getTag();
+                mClickListener.onClick(productId, v);
+            }
+        });
+
+        mHolder.getCardTitleView().setText(product.getTitle());
 
 
         if (mMatrix != null) {
@@ -92,14 +113,13 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
 
 
     // ViewHolder
-
     private static class ViewHolder extends RecyclerView.ViewHolder {
-        // Fields - TODO finish to implement
 
         private final CardView mCardView;
         private final ImageView mCardImageView;
         private final TextView mCardPriceView;
         private final LinearLayout mCardPriceLayout;
+        private final TextView mCardTitleView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -107,6 +127,7 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
             mCardImageView = (ImageView) itemView.findViewById(R.id.img_card_view);
             mCardPriceView = (TextView) itemView.findViewById(R.id.card_price_text);
             mCardPriceLayout = (LinearLayout) itemView.findViewById(R.id.card_price_container);
+            mCardTitleView = (TextView)itemView.findViewById(R.id.card_title_text);
         }
 
         public CardView getCardView() {
@@ -123,6 +144,11 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
 
         public TextView getCardPriceView() {
             return mCardPriceView;
+        }
+
+        public TextView getCardTitleView()
+        {
+            return mCardTitleView;
         }
     }
 

@@ -9,6 +9,7 @@
     <dimen name="card_view_height_half">180dp</dimen>
     <dimen name="card_view_width_half">100dp</dimen>
     <dimen name="card_view_margin">10dp</dimen>
+    <dimen name="card_view_padding_top">1dp</dimen>
     <dimen name="card_view_elevation">2dp</dimen>
     <dimen name="card_view_corner_radius">2dp</dimen>
     <dimen name="card_view_price_holder_height">40dp</dimen>

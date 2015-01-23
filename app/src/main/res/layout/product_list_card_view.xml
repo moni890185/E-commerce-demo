@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_marginBottom="@dimen/card_view_margin"
         android:layout_gravity="left"
+        android:foreground="@drawable/ripple"
         android:layout_width="@dimen/card_view_width"
+        android:stateListAnimator="@anim/raise_animation"
         android:layout_height="@dimen/card_view_height"
         card_view:cardElevation="@dimen/card_view_elevation"
         card_view:cardCornerRadius="@dimen/card_view_corner_radius">
 
+
         <ImageView
             android:layout_width="match_parent"
-            android:src="@drawable/img_card_view"
             android:layout_height="match_parent"
             android:scaleType="matrix"
             android:id="@+id/img_card_view" />
@@ -25,13 +27,28 @@
             android:id="@+id/card_price_container"
             android:layout_width="match_parent"
             android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="vertical"
             android:background="@color/card_view_price_holder_background"
             android:layout_height="@dimen/card_view_price_holder_height">
 
             <TextView
-                android:id="@+id/card_price_text"
+                android:id="@+id/card_title_text"
+                android:paddingTop="@dimen/card_view_padding_top"
                 android:gravity="center"
                 android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:text="Pants"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/card_price_text"
+                android:gravity="center"
                 android:textColor="@android:color/white"
                 android:text="@string/price_card_view"
                 android:shadowColor="@android:color/black"
@@ -39,8 +56,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

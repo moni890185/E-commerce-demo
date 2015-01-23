@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
 import android.transition.Transition;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,9 +18,11 @@ public class ProductDetailActivity extends Activity {
     public final static String VIEW_TRANSITION_IMAGE ="product:card:image";
     public final static String VIEW_TRANSITION_PRICE = "product:card:price";
     public final static String VIEW_TRANSITION_HOLDER_PRICE = "product:card:holder:price";
+    public final static String VIEW_TRANSITION_TITLE = "product:card:holder:title";
 
     private ImageView mImage;
     private TextView mPrice;
+    private TextView mTitle;
     private Product mProduct;
 
     @Override
@@ -28,9 +31,12 @@ public class ProductDetailActivity extends Activity {
         setContentView(R.layout.activity_product_detail);
         mImage = (ImageView) findViewById(R.id.product_detail_img);
         mPrice = (TextView) findViewById(R.id.product_detail_price);
+        mTitle = (TextView)findViewById(R.id.product_detail_title);
 
-        ViewCompat.setTransitionName(mImage,VIEW_TRANSITION_IMAGE);
+
         ViewCompat.setTransitionName(mPrice,VIEW_TRANSITION_PRICE);
+        ViewCompat.setTransitionName(mTitle, VIEW_TRANSITION_TITLE);
+        ViewCompat.setTransitionName(mImage,VIEW_TRANSITION_IMAGE);
 
 
         initData();
@@ -41,19 +47,20 @@ public class ProductDetailActivity extends Activity {
     private void insertContent() {
 
         // for lollipop only
-        Transition transition = getWindow().getSharedElementEnterTransition();
-        if(transition!=null)
+        Transition transitionEnter = getWindow().getSharedElementEnterTransition();
+        if(transitionEnter!=null)
         {
-            transition.addListener(new Transition.TransitionListener() {
+            transitionEnter.addListener(new Transition.TransitionListener() {
                 @Override
                 public void onTransitionStart(Transition transition) {
-
+                    Log.d("Monica", "getSharedElementEnterTransition - onTransitionStart");
                 }
 
                 @Override
                 public void onTransitionEnd(Transition transition) {
                     loadBigImage();
                     transition.removeListener(this);
+                    Log.d("Monica", "getSharedElementEnterTransition - onTransitionEnd");
                 }
 
                 @Override
@@ -68,14 +75,50 @@ public class ProductDetailActivity extends Activity {
 
                 @Override
                 public void onTransitionResume(Transition transition) {
+                    Log.d("Monica", "getSharedElementEnterTransition - onTransitionResume");
+                }
+            });
+        }
 
+        Transition transitionReturn = getWindow().getSharedElementReturnTransition();
+        if(transitionReturn!=null)
+        {
+            transitionReturn.addListener(new Transition.TransitionListener() {
+                @Override
+                public void onTransitionStart(Transition transition) {
+                    Log.d("Monica", "getSharedElementReturnTransition - onTransitionEnd");
+//                    Animation a = AnimationUtils.loadAnimation(getApplicationContext(),android.R.anim.fade_in);
+//                    mTitle.startAnimation(a);
+//                    mPrice.startAnimation(a);
+                }
+
+                @Override
+                public void onTransitionEnd(Transition transition) {
+                    Log.d("Monica", "getSharedElementReturnTransition - onTransitionEnd");
+                }
+
+                @Override
+                public void onTransitionCancel(Transition transition) {
+
+                }
+
+                @Override
+                public void onTransitionPause(Transition transition) {
+
+                }
+
+                @Override
+                public void onTransitionResume(Transition transition) {
+                    Log.d("Monica", "getSharedElementReturnTransition - onTransitionResume");
                 }
             });
         }
 
         mPrice.setText(mProduct.getmPrice());
-        // the smaill image
+        // the small image
         mImage.setImageResource(mProduct.getImageDrawable());
+
+        mTitle.setText(mProduct.getTitle());
 
 
     }

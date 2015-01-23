@@ -61,8 +61,6 @@ public class MainActivity extends Activity implements ScaleGestureListener.Scale
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mProductListAdapter);
-
-
     }
 
     @Override
@@ -102,16 +100,15 @@ public class MainActivity extends Activity implements ScaleGestureListener.Scale
     public void onClick(Integer productId, View view) {
         Intent intent = new Intent(this, ProductDetailActivity.class);
         intent.putExtra(ProductDetailActivity.PRODUCT_ID, productId);
-        // inserting transition animation.
 
-        ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, new Pair<View, String>(view.findViewById(R.id.img_card_view), ProductDetailActivity.VIEW_TRANSITION_IMAGE), new Pair<View, String>(view.findViewById(R.id.card_price_text), ProductDetailActivity.VIEW_TRANSITION_PRICE), new Pair<View, String>(view.findViewById(R.id.card_price_container), ProductDetailActivity.VIEW_TRANSITION_HOLDER_PRICE)
+        // inserting transition animation.
+        ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, new Pair<View, String>(view.findViewById(R.id.card_price_text), ProductDetailActivity.VIEW_TRANSITION_PRICE),new Pair<View, String>(view.findViewById(R.id.card_title_text),ProductDetailActivity.VIEW_TRANSITION_TITLE),  new Pair<View, String>(view.findViewById(R.id.img_card_view), ProductDetailActivity.VIEW_TRANSITION_IMAGE), new Pair<View, String>(view.findViewById(R.id.card_price_container), ProductDetailActivity.VIEW_TRANSITION_HOLDER_PRICE)
         );
 
-//        the view
-//        getWindow().setSharedElementEnterTransition(new ChangeImageTransform());
-//
 //        enter
 //        getWindow().setAllowEnterTransitionOverlap(true);
+
+
 
         ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
     }

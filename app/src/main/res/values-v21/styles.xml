@@ -12,6 +12,9 @@
 
         <!-- theme UI controls like checkboxes and text fields -->
         <item name="android:colorAccent">@android:color/white</item>
+
+        <item name="android:windowSharedElementEnterTransition">@transition/shared_element_enter_transition</item>
+        <!--<item name="android:windowSharedElementReturnTransition">@transition/shared_element_exit_transition</item>-->
     </style>
 
 </resources>

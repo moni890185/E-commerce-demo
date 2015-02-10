@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.project.monica.openreplyproject.R;
-import com.project.monica.openreplyproject.listener.ScaleGestureListener;
+import com.project.monica.openreplyproject.listener.CustomScaleGestureListener;
 import com.project.monica.openreplyproject.model.Product;
 
 import java.util.ArrayList;
@@ -24,10 +24,9 @@ import timber.log.Timber;
 /**
  * Created by monica on 17/12/2014.
  */
-public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGestureListener.ScalePinchListener {
+public class ProductListAdapter extends RecyclerView.Adapter implements CustomScaleGestureListener.ScalePinchListener {
 
-    public interface OnCustomClickListener
-    {
+    public interface OnCustomClickListener {
         void onClick(Integer productId, View view);
     }
 
@@ -56,33 +55,36 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
         ViewHolder mHolder = (ViewHolder) holder;
         Product product = mDataSet.get(position);
 
-        Timber.d("onBindViewHolder - price: " + product.getmPrice());
-
-        String price = product.getmPrice();
-        mHolder.getCardPriceView().setText(TextUtils.concat("£ ", price));
-
-        Timber.d("onBindViewHolder - img_id: " + product.getImageDrawable());
+        String price = product.getPrice();
         int imgId = product.getImageDrawable();
+
+        // insert text
+        mHolder.getCardPriceView().setText(TextUtils.concat("£ ", price));
+        mHolder.getCardTitleView().setText(product.getTitle());
         mHolder.getCardImageView().setImageResource(imgId);
 
+        // tag the holder view with the productID
         mHolder.getCardView().setTag(product.getId());
         mHolder.getCardView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer productId = (Integer)v.getTag();
+                Integer productId = (Integer) v.getTag();
                 mClickListener.onClick(productId, v);
             }
         });
 
-        mHolder.getCardTitleView().setText(product.getTitle());
+        editViewsIfPinchAction(mHolder);
 
+    }
 
+    private void editViewsIfPinchAction(ViewHolder mHolder) {
+        // matrix is not null id user pinched the items.
         if (mMatrix != null) {
             Timber.d("NOT USING MATRIX - but resizing");
             // Card view size
             float cardWidth = mContext.getResources().getDimension(R.dimen.card_view_width_half);
             float cardHeight = mContext.getResources().getDimension(R.dimen.card_view_height_half);
-            mHolder.getCardView().setLayoutParams(new FrameLayout.LayoutParams((int)cardWidth, (int)cardHeight));
+            mHolder.getCardView().setLayoutParams(new FrameLayout.LayoutParams((int) cardWidth, (int) cardHeight));
 
             // Image size
             int imgWidth = mHolder.getCardImageView().getWidth();
@@ -94,7 +96,6 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
             int cardPriceContainerHeight = mHolder.getCardPriceContainerView().getHeight();
             mHolder.getCardPriceContainerView().setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, cardPriceContainerHeight));
         }
-
     }
 
     @Override
@@ -127,7 +128,7 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
             mCardImageView = (ImageView) itemView.findViewById(R.id.img_card_view);
             mCardPriceView = (TextView) itemView.findViewById(R.id.card_price_text);
             mCardPriceLayout = (LinearLayout) itemView.findViewById(R.id.card_price_container);
-            mCardTitleView = (TextView)itemView.findViewById(R.id.card_title_text);
+            mCardTitleView = (TextView) itemView.findViewById(R.id.card_title_text);
         }
 
         public CardView getCardView() {
@@ -146,8 +147,7 @@ public class ProductListAdapter extends RecyclerView.Adapter implements ScaleGes
             return mCardPriceView;
         }
 
-        public TextView getCardTitleView()
-        {
+        public TextView getCardTitleView() {
             return mCardTitleView;
         }
     }

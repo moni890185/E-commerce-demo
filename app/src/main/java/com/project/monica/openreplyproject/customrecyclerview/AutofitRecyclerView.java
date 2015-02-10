@@ -5,14 +5,17 @@ import android.content.res.TypedArray;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
+
+import timber.log.Timber;
 
 /** Resource Lib.:
  * https://github.com/chiuki/android-recyclerview/blob/master/app/src/main/java/com/sqisland/android/recyclerview/AutofitRecyclerView.java
- * Edited by Monica.
+ * Edit by Monica.
  */
 
-
+/***
+ * AutofitRecyclerView is a custom RecyclerView able to calculate the numColumns dynamically, based on these inputs: column Width and RecyclerView width.
+ */
 public class AutofitRecyclerView extends RecyclerView {
 
     /* The number of columns in the grid */
@@ -53,16 +56,16 @@ public class AutofitRecyclerView extends RecyclerView {
     protected void onMeasure(int widthSpec, int heightSpec) {
         super.onMeasure(widthSpec, heightSpec);
         if (columnWidth > 0) {
-            Log.d("Monica","onMeasure - columnWidth"+ columnWidth);
+            Timber.d("Monica", "onMeasure - THE CLUE - columnWidth: " + columnWidth + " and getMeasuredWidth: "+ getMeasuredWidth());
             int spanCount = Math.max(1, getMeasuredWidth() / columnWidth);
-            Log.d("Monica","onMeasure - spanCount"+ spanCount);
+            Timber.d("Monica","onMeasure - RESULT: spanCount: "+ spanCount);
             manager.setSpanCount(spanCount);
         }
     }
 
     public void refreshColumnWidth(int columnWidth)
     {
-        Log.d("Monica","refreshColumnWidth - "+ columnWidth);
+        Timber.d("Monica","refreshColumnWidth - "+ columnWidth);
         this.columnWidth = columnWidth;
 
         // to call onMeasure

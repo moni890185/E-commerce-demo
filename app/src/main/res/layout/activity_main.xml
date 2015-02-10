@@ -14,6 +14,7 @@
        android:columnWidth="@dimen/column_width"
        android:layout_height="match_parent"/>
 
+    <!-- transparent view to manage the touch event regarding the pinch zoom feature -->
     <View
         android:id="@+id/transparent_view"
         android:layout_width="match_parent"

@@ -1,13 +1,14 @@
 package com.project.monica.openreplyproject.listener;
 
 import android.graphics.Matrix;
-import android.util.Log;
 import android.view.ScaleGestureDetector;
+
+import timber.log.Timber;
 
 /**
  * Created by monica on 08/01/2015.
  */
-public class ScaleGestureListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+public class CustomScaleGestureListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
     // Interface
     public interface ScalePinchListener {
         public void onScaleAction(Matrix matrix);
@@ -20,7 +21,7 @@ public class ScaleGestureListener extends ScaleGestureDetector.SimpleOnScaleGest
 
 
     public void setScalePinchListener(ScalePinchListener mScalePinchAdapterListener, ScalePinchListener mScalePinchActivityListener) {
-        Log.d("Monica", " ScaleGestureListener - setProductListAdapterListener" + mScalePinchAdapterListener);
+        Timber.d("Monica", " ScaleGestureListener - setProductListAdapterListener" + mScalePinchAdapterListener);
         this.mScalePinchAdapterListener = mScalePinchAdapterListener;
         this.mScalePinchActivityListener = mScalePinchActivityListener;
     }
@@ -28,7 +29,7 @@ public class ScaleGestureListener extends ScaleGestureDetector.SimpleOnScaleGest
 
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
-        Log.d("Monica", " ScaleGestureListener - onScale!!!!!!!!!!!!!!");
+        Timber.d("Monica", " ScaleGestureListener - onScale!!!!!!!!!!!!!!");
         scale *= detector.getScaleFactor();
         scale = Math.max(0.1f, Math.min(scale, 5.0f));
         matrix.setScale(scale, scale);

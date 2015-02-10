@@ -54,7 +54,7 @@ public class Product {
         this.mTitle = mTitle;
     }
 
-    public String getmPrice() {
+    public String getPrice() {
         return mPrice;
     }
 

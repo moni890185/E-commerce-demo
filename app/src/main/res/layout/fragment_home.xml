@@ -1,10 +1,29 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.project.monica.snobsinenobilitate.fragments.HomeFragment">
+    tools:context="com.project.monica.snobsinenobilitate.fragments.HomeFragment"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/wood_more_contrast"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
 
-</FrameLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+
+            android:src="@drawable/pannel_about"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_general" />
+
+    </LinearLayout>
+</ScrollView>

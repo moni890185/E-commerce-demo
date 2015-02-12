@@ -11,18 +11,14 @@ import android.view.MenuItem;
 import android.widget.Toolbar;
 
 import com.project.monica.snobsinenobilitate.R;
-import com.project.monica.snobsinenobilitate.fragments.AboutFragment;
 import com.project.monica.snobsinenobilitate.fragments.ContactUsFragment;
+import com.project.monica.snobsinenobilitate.fragments.HomeFragment;
 import com.project.monica.snobsinenobilitate.fragments.NavigationDrawerFragment;
 import com.project.monica.snobsinenobilitate.fragments.ProductListFragment;
 import com.project.monica.snobsinenobilitate.fragments.StoreFinderFragment;
-import com.project.monica.snobsinenobilitate.model.Product;
 
 public class NavDrawerActivity extends FragmentActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, ProductListFragment.OnFragmentInteractionListener {
-
-    public static final String ID_IMAGE = "ID_IMAGE";
-    public static final String PRICE = "PRICE";
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, ProductListFragment.OnProductListItemListener {
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -37,10 +33,9 @@ public class NavDrawerActivity extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
+
        // setting the action bar.
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         toolbar.setTitle(getString(R.string.app_name));
         setActionBar(toolbar);
         mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -54,13 +49,6 @@ public class NavDrawerActivity extends FragmentActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
-        //   MENU {
-        //          HOME,
-        //          COLLECTION,
-        //          STORES,
-        //          CONTACT_US,
-        //          ABOUT
-        //        }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -71,7 +59,7 @@ public class NavDrawerActivity extends FragmentActivity
         {
             case 0:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, AboutFragment.newInstance(position + 1))
+                        .replace(R.id.container, HomeFragment.newInstance(position + 1))
                         .commit();
                 break;
             case 1:
@@ -95,44 +83,11 @@ public class NavDrawerActivity extends FragmentActivity
 
     }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-
-            case 4:
-                mTitle = getString(R.string.title_section4);
-        }
-    }
-
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.nav_drawer, menu);
-            restoreActionBar();
-            return true;
-        }
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -146,19 +101,31 @@ public class NavDrawerActivity extends FragmentActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+        @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (!mNavigationDrawerFragment.isDrawerOpen()) {
+            // Only show items in the action bar relevant to this screen
+            // if the drawer is not showing. Otherwise, let the drawer
+            // decide what to show in the action bar.
+            getMenuInflater().inflate(R.menu.nav_drawer, menu);
+            restoreActionBar();
+            return true;
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /**
+     * Implementing {@link ProductListFragment} listener related to the user item click when he navigates in the product list.
+     * */
     @Override
-    public void onFragmentInteraction(Product product) {
-        // ProductListFragment - onItemClicked
-        //launching ProductDetailActivity
-        Intent i = new Intent();
-        i.putExtra(ID_IMAGE,product.getImageDrawable());
-        i.putExtra(PRICE,product.getPrice());
-        i.setClass(this, ProductDetailActivity.class);
-        startActivity(i);
+    public void onProductListItemClick(Integer productId) {
+
+        Intent intent = new Intent(this, ProductDetailActivity.class);
+        intent.putExtra(ProductDetailActivity.PRODUCT_ID, productId);
+        startActivity(intent);
 
     }
 

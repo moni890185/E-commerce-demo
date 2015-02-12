@@ -6,19 +6,22 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+/**
+ * SnobSineNobilitate requirement - AWARE that this is an ANTI PATTERN.
+ */
 public class SplashActivity extends Activity {
+
+    private static final int MSG_DELAY = 2000;
+    private static final int LAUNCH_INTENT = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Start immediately the main activity. This activity is used to present a
-        // splash meanwhile
-        // zygote is creating the process to start the app
         Handler h = new Handler(){
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                if(msg.what == 0)
+                if(msg.what == LAUNCH_INTENT)
                 {
                     Intent intent = new Intent(SplashActivity.this, NavDrawerActivity.class);
                     startActivity(intent);
@@ -26,7 +29,7 @@ public class SplashActivity extends Activity {
                 }
             }
         };
-        h.sendEmptyMessageDelayed(0, 2000);
+        h.sendEmptyMessageDelayed(LAUNCH_INTENT, MSG_DELAY);
     }
 
 

@@ -1,14 +1,13 @@
-package com.project.monica.snobsinenobilitate.adapter;
+package com.project.monica.snobsinenobilitate.adapters;
 
 import android.content.Context;
-import android.graphics.Matrix;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.project.monica.snobsinenobilitate.R;
@@ -16,22 +15,18 @@ import com.project.monica.snobsinenobilitate.model.Product;
 
 import java.util.ArrayList;
 
-import timber.log.Timber;
-
 /**
  * Created by monica on 17/12/2014.
  */
 public class ProductListAdapter extends RecyclerView.Adapter {
 
     // Fields
-    private ArrayList<Product> mDataSet;
-    private Matrix mMatrix = null;
     private Context mContext;
+    private ArrayList<Product> mDataSet;
     private OnCustomItemClickListener mItemListener;
 
-    public interface OnCustomItemClickListener
-    {
-        void onClick(int position);
+    public interface OnCustomItemClickListener {
+        void onItemClick(Integer productId);
     }
 
     // Constructor
@@ -49,21 +44,24 @@ public class ProductListAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder mHolder = (ViewHolder) holder;
-        Timber.d("onBindViewHolder - price: " + mDataSet.get(position).getPrice());
-        Double price = mDataSet.get(position).getPrice();
-        mHolder.getCardPriceView().setText("£ "+ price.toString());
+        Product product = mDataSet.get(position);
 
-        mHolder.getCardDescriptionView().setText(mDataSet.get(position).getImageDescription());
+        String price = product.getPrice();
+        int imgId = product.getImageId();
 
-        Timber.d("onBindViewHolder - img_id: " + mDataSet.get(position).getImageDrawable());
-        int imgId = mDataSet.get(position).getImageDrawable();
+        // insert Content
+        mHolder.getCardPriceView().setText(TextUtils.concat(mContext.getResources().getString(R.string.price_currency), price));
+        mHolder.getCardTitleView().setText(product.getTitle());
         mHolder.getCardImageView().setImageResource(imgId);
+
+        mHolder.getCardView().setTag(product.getId());
         mHolder.getCardView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mItemListener.onClick(position);
+                Integer productId = (Integer) v.getTag();
+                mItemListener.onItemClick(productId);
             }
         });
     }
@@ -76,25 +74,20 @@ public class ProductListAdapter extends RecyclerView.Adapter {
 
 
     // ViewHolder
-
     private static class ViewHolder extends RecyclerView.ViewHolder {
-        // Fields - TODO finish to implement
 
         private final CardView mCardView;
         private final ImageView mCardImageView;
         private final TextView mCardPriceView;
-        private final TextView mCardDescriptionView;
-        private final LinearLayout mCardPriceLayout;
+        private final TextView mCardTitleView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mCardView = (CardView) itemView.findViewById(R.id.card_view);
             mCardImageView = (ImageView) itemView.findViewById(R.id.img_card_view);
             mCardPriceView = (TextView) itemView.findViewById(R.id.card_price_text);
-            mCardDescriptionView = (TextView) itemView.findViewById(R.id.card_description_text);
-            mCardPriceLayout = (LinearLayout) itemView.findViewById(R.id.card_price_container);
+            mCardTitleView = (TextView) itemView.findViewById(R.id.card_title_text);
         }
-        public TextView getCardDescriptionView(){return  mCardDescriptionView;}
 
         public CardView getCardView() {
             return mCardView;
@@ -104,12 +97,12 @@ public class ProductListAdapter extends RecyclerView.Adapter {
             return mCardImageView;
         }
 
-        public LinearLayout getCardPriceContainerView() {
-            return mCardPriceLayout;
-        }
-
         public TextView getCardPriceView() {
             return mCardPriceView;
+        }
+
+        public TextView getCardTitleView() {
+            return mCardTitleView;
         }
     }
 

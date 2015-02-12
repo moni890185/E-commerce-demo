@@ -10,7 +10,7 @@ import static timber.log.Timber.DebugTree;
 /**
  * Created by monica on 14/01/2015.
  */
-public class LabApplication extends Application {
+public class SSNApplication extends Application {
 
     @Override
     public void onCreate() {

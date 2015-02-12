@@ -21,11 +21,6 @@ import android.widget.ListView;
 
 import com.project.monica.snobsinenobilitate.R;
 
-/**
- * Fragment used for managing interactions for and presentation of a navigation drawer.
- * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
- * design guidelines</a> for a complete explanation of the behaviors implemented here.
- */
 public class NavigationDrawerFragment extends Fragment {
 
     /**
@@ -98,7 +93,7 @@ public class NavigationDrawerFragment extends Fragment {
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 getActivity(),
-                R.layout.text_menu_layout,
+                R.layout.nav_drawer_item_text,
                 android.R.id.text1,
                 new String[]{
                         getString(R.string.title_section1),

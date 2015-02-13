@@ -2,7 +2,7 @@
 Demo E-Commerce App with some Material Design concepts
 
 ## Navigation Drawer
-![Alt text](/Screenshots/3.product_list_menu_open.png?raw=true "Navigation Drawer")
+![Alt text](/Screenshots/3.product_list_menu_open.jpg?raw=true "Navigation Drawer")
 
 ## Product List - RecyclerView
 ![Alt text](Screenshots/4.product_list_screen.jpg?raw=true "Product Listing")

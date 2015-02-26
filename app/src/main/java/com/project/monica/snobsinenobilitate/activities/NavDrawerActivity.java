@@ -3,13 +3,11 @@ package com.project.monica.snobsinenobilitate.activities;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toolbar;
-
 import com.project.monica.snobsinenobilitate.R;
 import com.project.monica.snobsinenobilitate.fragments.ContactUsFragment;
 import com.project.monica.snobsinenobilitate.fragments.HomeFragment;
@@ -17,7 +15,7 @@ import com.project.monica.snobsinenobilitate.fragments.NavigationDrawerFragment;
 import com.project.monica.snobsinenobilitate.fragments.ProductListFragment;
 import com.project.monica.snobsinenobilitate.fragments.StoreFinderFragment;
 
-public class NavDrawerActivity extends FragmentActivity
+public class NavDrawerActivity extends BaseActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, ProductListFragment.OnProductListItemListener {
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.

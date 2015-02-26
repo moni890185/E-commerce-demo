@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.customrecyclerview;
+package com.project.monica.snobsinenobilitate;
 
 import android.content.Context;
 import android.content.res.TypedArray;

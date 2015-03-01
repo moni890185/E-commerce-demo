@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.models.pojo;
+package com.project.monica.snobsinenobilitate.models.pojo.collection;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;

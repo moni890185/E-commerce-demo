@@ -2,18 +2,18 @@ package com.project.monica.snobsinenobilitate.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.project.monica.snobsinenobilitate.AutofitRecyclerView;
 import com.project.monica.snobsinenobilitate.R;
 import com.project.monica.snobsinenobilitate.adapters.ProductListAdapter;
-import com.project.monica.snobsinenobilitate.event.CategoryProductEvent;
-import com.project.monica.snobsinenobilitate.models.CategoryService;
-import com.project.monica.snobsinenobilitate.models.pojo.Product;
+import com.project.monica.snobsinenobilitate.events.NetworkErrorEvent;
+import com.project.monica.snobsinenobilitate.events.ProductListContentEvent;
+import com.project.monica.snobsinenobilitate.models.ProductListModel;
+import com.project.monica.snobsinenobilitate.models.pojo.collection.Product;
+import com.project.monica.snobsinenobilitate.utils.Logger;
 import com.squareup.otto.Subscribe;
 import java.util.List;
 
@@ -22,16 +22,18 @@ import java.util.List;
 // * {@link ProductListFragment.OnFragmentInteractionListener} interface
 // * to handle interaction events.
 // */
-public class ProductListFragment extends Fragment
+public class ProductListFragment extends BaseFragment
     implements ProductListAdapter.OnCustomItemClickListener {
 
   public interface OnProductListItemListener {
-    public void onProductListItemClick(Integer productId);
+    public void onProductListItemClick(String productId);
   }
 
   private static final String TITLE = "title";
+
   // tmp Category
   private String productCategory = "day-dresses";
+
   private AutofitRecyclerView mRecyclerView;
 
   // Adapter
@@ -61,7 +63,6 @@ public class ProductListFragment extends Fragment
     if (getArguments() != null) {
       mTitle = getArguments().getInt(TITLE);
     }
-
     initDataset();
   }
 
@@ -71,11 +72,9 @@ public class ProductListFragment extends Fragment
     // Inflate the layout for this fragment
     View v = inflater.inflate(R.layout.fragment_product_list, container, false);
     mRecyclerView = (AutofitRecyclerView) v.findViewById(R.id.recycler_view_product_list);
-
     // RecyclerView can perform several optimizations if it can know in advance that changes in adapter content cannot change the size of the RecyclerView itself.
-    mRecyclerView.setHasFixedSize(true);
     mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
+    mRecyclerView.setHasFixedSize(true);
     return v;
   }
 
@@ -99,32 +98,35 @@ public class ProductListFragment extends Fragment
   private void initDataset() {
 
     // TEMP synchronous request
-    Logger.d("Monica", "init dataset");
-
+    Logger.d("init dataset");
     // launch request
-    CategoryService.getInstance().getCategoryProducts(productCategory);
+    ProductListModel.getInstance().getCategoryProduct(productCategory, getActivity());
   }
 
-
-  // an Event will be launched, and when the response will be retrieved ( from db) an event to update UI will be raised.
-
-
+  // when the data response will be retrieved ( from db) an event to update UI will be posted.
   @Subscribe
-  private void onCategoryProductsReceived(CategoryProductEvent event)
-  {
-    Logger.d("Monica", "onSuccess product");
-    mDataset = event.getCategory().getProducts();
+  public void onCategoryProductsReceived(ProductListContentEvent event) {
+    Logger.d("onCategoryProductsReceived - ProductListContentEvent - onSuccess product");
+    mDataset = event.getProductList().getProducts();
     initAdapter();
   }
 
+  @Subscribe
+  public void onNetworkErrorEvent(NetworkErrorEvent event) {
+    // TODO implement error view.
+  }
+
   private void initAdapter() {
-    Logger.d("Monica", "mDataset len" + mDataset.size());
-    mProductListAdapter = new ProductListAdapter(getActivity(), mDataset, this);
-    mRecyclerView.setAdapter(mProductListAdapter);
+    Logger.d("mDataset len" + mDataset.size());
+    if (mProductListAdapter == null) {
+      mProductListAdapter = new ProductListAdapter(getActivity(), mDataset, this);
+      mRecyclerView.setAdapter(mProductListAdapter);
+    }
+    mProductListAdapter.notifyDataSetChanged();
   }
 
   @Override
-  public void onItemClick(Integer productId) {
+  public void onItemClick(String productId) {
     if (mProductListItemListener != null) {
       mProductListItemListener.onProductListItemClick(productId);
     }

@@ -119,7 +119,7 @@ public class NavDrawerActivity extends BaseActivity
      * Implementing {@link ProductListFragment} listener related to the user item click when he navigates in the product list.
      * */
     @Override
-    public void onProductListItemClick(Integer productId) {
+    public void onProductListItemClick(String productId) {
 
         Intent intent = new Intent(this, ProductDetailActivity.class);
         intent.putExtra(ProductDetailActivity.PRODUCT_ID, productId);

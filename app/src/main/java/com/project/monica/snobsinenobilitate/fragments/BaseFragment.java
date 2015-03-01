@@ -1,13 +1,12 @@
-package com.project.monica.snobsinenobilitate.activities;
+package com.project.monica.snobsinenobilitate.fragments;
 
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
 import com.project.monica.snobsinenobilitate.otto.ScopedBus;
 
 /**
- * Created by monica on 25/02/2015.
+ * Created by monica on 01/03/2015.
  */
-public abstract class BaseActivity extends FragmentActivity {
-
+public class BaseFragment extends Fragment {
   private final ScopedBus scopedBus = new ScopedBus();
 
   protected ScopedBus getBus() {

@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.models.pojo;
+package com.project.monica.snobsinenobilitate.models.pojo.collection;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashMap;

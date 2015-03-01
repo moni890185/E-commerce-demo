@@ -1,9 +1,8 @@
 
-package com.project.monica.snobsinenobilitate.models.pojo;
+package com.project.monica.snobsinenobilitate.models.pojo.collection;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -11,14 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({
     "sizeName",
     "width",
     "height",
     "url"
 })
-public class Large {
+public class Small {
 
     @JsonProperty("sizeName")
     private String sizeName;
@@ -40,7 +38,7 @@ public class Large {
         this.sizeName = sizeName;
     }
 
-    public Large withSizeName(String sizeName) {
+    public Small withSizeName(String sizeName) {
         this.sizeName = sizeName;
         return this;
     }
@@ -55,7 +53,7 @@ public class Large {
         this.width = width;
     }
 
-    public Large withWidth(Integer width) {
+    public Small withWidth(Integer width) {
         this.width = width;
         return this;
     }
@@ -70,7 +68,7 @@ public class Large {
         this.height = height;
     }
 
-    public Large withHeight(Integer height) {
+    public Small withHeight(Integer height) {
         this.height = height;
         return this;
     }
@@ -85,7 +83,7 @@ public class Large {
         this.url = url;
     }
 
-    public Large withUrl(String url) {
+    public Small withUrl(String url) {
         this.url = url;
         return this;
     }

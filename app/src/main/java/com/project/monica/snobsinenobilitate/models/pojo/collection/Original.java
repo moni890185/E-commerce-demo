@@ -1,29 +1,24 @@
 
-package com.project.monica.snobsinenobilitate.models.pojo;
+package com.project.monica.snobsinenobilitate.models.pojo.collection;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.HashMap;
 import java.util.Map;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "sizeName",
-    "width",
-    "height",
     "url"
 })
-public class Small {
+public class Original {
 
     @JsonProperty("sizeName")
     private String sizeName;
-    @JsonProperty("width")
-    private Integer width;
-    @JsonProperty("height")
-    private Integer height;
     @JsonProperty("url")
     private String url;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -38,38 +33,8 @@ public class Small {
         this.sizeName = sizeName;
     }
 
-    public Small withSizeName(String sizeName) {
+    public Original withSizeName(String sizeName) {
         this.sizeName = sizeName;
-        return this;
-    }
-
-    @JsonProperty("width")
-    public Integer getWidth() {
-        return width;
-    }
-
-    @JsonProperty("width")
-    public void setWidth(Integer width) {
-        this.width = width;
-    }
-
-    public Small withWidth(Integer width) {
-        this.width = width;
-        return this;
-    }
-
-    @JsonProperty("height")
-    public Integer getHeight() {
-        return height;
-    }
-
-    @JsonProperty("height")
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    public Small withHeight(Integer height) {
-        this.height = height;
         return this;
     }
 
@@ -83,7 +48,7 @@ public class Small {
         this.url = url;
     }
 
-    public Small withUrl(String url) {
+    public Original withUrl(String url) {
         this.url = url;
         return this;
     }

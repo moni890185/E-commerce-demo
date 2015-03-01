@@ -19,7 +19,7 @@ public abstract class DatabaseHelper {
 	public abstract void upgradeTables(SQLiteDatabase db, int oldVersion, int newVersion);
 
 	public abstract void updateTables(SQLiteDatabase db);
-	
+
 	public abstract String getTableName();
 
 	public abstract String getCreateTableSql();

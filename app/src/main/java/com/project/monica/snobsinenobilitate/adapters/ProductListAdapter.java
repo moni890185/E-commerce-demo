@@ -3,14 +3,14 @@ package com.project.monica.snobsinenobilitate.adapters;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.project.monica.snobsinenobilitate.R;
-import com.project.monica.snobsinenobilitate.models.pojo.Product;
+import com.project.monica.snobsinenobilitate.models.pojo.collection.Product;
+import com.project.monica.snobsinenobilitate.utils.Logger;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
@@ -25,13 +25,13 @@ public class ProductListAdapter extends RecyclerView.Adapter {
   private OnCustomItemClickListener mItemListener;
 
   public interface OnCustomItemClickListener {
-    void onItemClick(Integer productId);
+    void onItemClick(String productId);
   }
 
   // Constructor
   public ProductListAdapter(Context context, List<Product> dataset,
       OnCustomItemClickListener itemListener) {
-
+    Logger.d("ProductListAdapter"+ dataset);
     mDataSet = dataset;
     mContext = context;
     mItemListener = itemListener;
@@ -47,24 +47,25 @@ public class ProductListAdapter extends RecyclerView.Adapter {
 
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    Logger.d("onBindViewHolder");
     ViewHolder mHolder = (ViewHolder) holder;
     Product product = mDataSet.get(position);
-    Logger.d("Monica", "product: " + product.getName());
+    Logger.d("product: " + product.getName());
 
     //// insert Content
     mHolder.getCardPriceView().setText(product.getPriceLabel());
     mHolder.getCardTitleView().setText(product.getName());
 
     String imageUrl = product.getImage().getSizes().getOriginal().getUrl();
-    Logger.d("Monica","img url: "+ imageUrl);
+    Logger.d("img url: "+ imageUrl);
 
     Picasso.with(mContext).load(imageUrl).into(mHolder.getCardImageView());
 
-    mHolder.getCardView().setTag(product.getId());
+    mHolder.getCardView().setTag(product.getCode());
     mHolder.getCardView().setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Integer productId = (Integer) v.getTag();
+        String productId = (String) v.getTag();
         mItemListener.onItemClick(productId);
       }
     });

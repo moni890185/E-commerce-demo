@@ -21,7 +21,7 @@ import android.widget.ListView;
 
 import com.project.monica.snobsinenobilitate.R;
 
-public class NavigationDrawerFragment extends Fragment {
+public class NavigationDrawerFragment extends BaseFragment {
 
     /**
      * Remember the position of the selected item.

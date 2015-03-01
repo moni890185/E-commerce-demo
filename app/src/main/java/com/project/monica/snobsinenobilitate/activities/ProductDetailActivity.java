@@ -1,6 +1,5 @@
 package com.project.monica.snobsinenobilitate.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,9 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 import com.project.monica.snobsinenobilitate.R;
-import com.project.monica.snobsinenobilitate.models.pojo.Product;
+import com.project.monica.snobsinenobilitate.models.pojo.collection.Product;
 
-public class ProductDetailActivity extends Activity implements View.OnClickListener {
+public class ProductDetailActivity extends BaseActivity implements View.OnClickListener {
   public final static String PRODUCT_ID = "product:id";
 
   private ImageView mImage;
@@ -48,7 +47,7 @@ public class ProductDetailActivity extends Activity implements View.OnClickListe
   }
 
   private void initData() {
-    Integer productId = getIntent().getIntExtra(PRODUCT_ID, 0);
+    String productId = getIntent().getStringExtra(PRODUCT_ID);
     //mProduct = Product.getProduct(productId);
   }
 

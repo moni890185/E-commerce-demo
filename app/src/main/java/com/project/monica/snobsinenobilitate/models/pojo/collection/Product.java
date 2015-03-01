@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.models.pojo;
+package com.project.monica.snobsinenobilitate.models.pojo.collection;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -16,7 +16,7 @@ import java.util.Map;
 public class Product {
 
   @JsonProperty("id")
-  private Integer id;
+  private String id;
   @JsonProperty("name")
   private String name;
   @JsonProperty("type")
@@ -57,19 +57,48 @@ public class Product {
   private String salePriceLabel;
   private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+  public Product()
+  {
+
+  }
+
+  public Product(String code, String name, String type, String currency, Integer price,
+      String priceLabel, Boolean inStock, String locale, String description,
+      String clickUrl, Image image,
+      List<Color> colors,
+      List<Size> sizes,
+      List<Category> categories, String seeMoreLabel, String seeMoreUrl,
+      String extractDate, Integer favoriteCount, Double salePrice, String salePriceLabel) {
+    this.id = code;
+    this.name = name;
+    this.type = type;
+    this.currency = currency;
+    this.price = price;
+    this.priceLabel = priceLabel;
+    this.inStock = inStock;
+    this.locale = locale;
+    this.description = description;
+    this.clickUrl = clickUrl;
+    this.image = image;
+    this.colors = colors;
+    this.sizes = sizes;
+    this.categories = categories;
+    this.seeMoreLabel = seeMoreLabel;
+    this.seeMoreUrl = seeMoreUrl;
+    this.extractDate = extractDate;
+    this.favoriteCount = favoriteCount;
+    this.salePrice = salePrice;
+    this.salePriceLabel = salePriceLabel;
+  }
+
   @JsonProperty("id")
-  public Integer getId() {
+  public String getCode() {
     return id;
   }
 
   @JsonProperty("id")
-  public void setId(Integer id) {
+  public void setCode(String id) {
     this.id = id;
-  }
-
-  public Product withId(Integer id) {
-    this.id = id;
-    return this;
   }
 
   @JsonProperty("name")
@@ -82,11 +111,6 @@ public class Product {
     this.name = name;
   }
 
-  public Product withName(String name) {
-    this.name = name;
-    return this;
-  }
-
   @JsonProperty("type")
   public String getType() {
     return type;
@@ -95,11 +119,6 @@ public class Product {
   @JsonProperty("type")
   public void setType(String type) {
     this.type = type;
-  }
-
-  public Product withType(String type) {
-    this.type = type;
-    return this;
   }
 
   @JsonProperty("currency")
@@ -112,11 +131,6 @@ public class Product {
     this.currency = currency;
   }
 
-  public Product withCurrency(String currency) {
-    this.currency = currency;
-    return this;
-  }
-
   @JsonProperty("price")
   public Integer getPrice() {
     return price;
@@ -125,11 +139,6 @@ public class Product {
   @JsonProperty("price")
   public void setPrice(Integer price) {
     this.price = price;
-  }
-
-  public Product withPrice(Integer price) {
-    this.price = price;
-    return this;
   }
 
   @JsonProperty("priceLabel")
@@ -142,11 +151,6 @@ public class Product {
     this.priceLabel = priceLabel;
   }
 
-  public Product withPriceLabel(String priceLabel) {
-    this.priceLabel = priceLabel;
-    return this;
-  }
-
   @JsonProperty("inStock")
   public Boolean getInStock() {
     return inStock;
@@ -155,11 +159,6 @@ public class Product {
   @JsonProperty("inStock")
   public void setInStock(Boolean inStock) {
     this.inStock = inStock;
-  }
-
-  public Product withInStock(Boolean inStock) {
-    this.inStock = inStock;
-    return this;
   }
 
   @JsonProperty("locale")
@@ -172,11 +171,6 @@ public class Product {
     this.locale = locale;
   }
 
-  public Product withLocale(String locale) {
-    this.locale = locale;
-    return this;
-  }
-
   @JsonProperty("description")
   public String getDescription() {
     return description;
@@ -185,11 +179,6 @@ public class Product {
   @JsonProperty("description")
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public Product withDescription(String description) {
-    this.description = description;
-    return this;
   }
 
   @JsonProperty("clickUrl")
@@ -202,11 +191,6 @@ public class Product {
     this.clickUrl = clickUrl;
   }
 
-  public Product withClickUrl(String clickUrl) {
-    this.clickUrl = clickUrl;
-    return this;
-  }
-
   @JsonProperty("image")
   public Image getImage() {
     return image;
@@ -215,11 +199,6 @@ public class Product {
   @JsonProperty("image")
   public void setImage(Image image) {
     this.image = image;
-  }
-
-  public Product withImage(Image image) {
-    this.image = image;
-    return this;
   }
 
   @JsonProperty("colors")
@@ -232,11 +211,6 @@ public class Product {
     this.colors = colors;
   }
 
-  public Product withColors(List<Color> colors) {
-    this.colors = colors;
-    return this;
-  }
-
   @JsonProperty("sizes")
   public List<Size> getSizes() {
     return sizes;
@@ -245,11 +219,6 @@ public class Product {
   @JsonProperty("sizes")
   public void setSizes(List<Size> sizes) {
     this.sizes = sizes;
-  }
-
-  public Product withSizes(List<Size> sizes) {
-    this.sizes = sizes;
-    return this;
   }
 
   @JsonProperty("categories")
@@ -262,11 +231,6 @@ public class Product {
     this.categories = categories;
   }
 
-  public Product withCategories(List<Category> categories) {
-    this.categories = categories;
-    return this;
-  }
-
   @JsonProperty("seeMoreLabel")
   public String getSeeMoreLabel() {
     return seeMoreLabel;
@@ -275,11 +239,6 @@ public class Product {
   @JsonProperty("seeMoreLabel")
   public void setSeeMoreLabel(String seeMoreLabel) {
     this.seeMoreLabel = seeMoreLabel;
-  }
-
-  public Product withSeeMoreLabel(String seeMoreLabel) {
-    this.seeMoreLabel = seeMoreLabel;
-    return this;
   }
 
   @JsonProperty("seeMoreUrl")
@@ -292,11 +251,6 @@ public class Product {
     this.seeMoreUrl = seeMoreUrl;
   }
 
-  public Product withSeeMoreUrl(String seeMoreUrl) {
-    this.seeMoreUrl = seeMoreUrl;
-    return this;
-  }
-
   @JsonProperty("extractDate")
   public String getExtractDate() {
     return extractDate;
@@ -305,11 +259,6 @@ public class Product {
   @JsonProperty("extractDate")
   public void setExtractDate(String extractDate) {
     this.extractDate = extractDate;
-  }
-
-  public Product withExtractDate(String extractDate) {
-    this.extractDate = extractDate;
-    return this;
   }
 
   @JsonProperty("favoriteCount")
@@ -322,11 +271,6 @@ public class Product {
     this.favoriteCount = favoriteCount;
   }
 
-  public Product withFavoriteCount(Integer favoriteCount) {
-    this.favoriteCount = favoriteCount;
-    return this;
-  }
-
   @JsonProperty("salePrice")
   public Double getSalePrice() {
     return salePrice;
@@ -335,11 +279,6 @@ public class Product {
   @JsonProperty("salePrice")
   public void setSalePrice(Double salePrice) {
     this.salePrice = salePrice;
-  }
-
-  public Product withSalePrice(Double salePrice) {
-    this.salePrice = salePrice;
-    return this;
   }
 
   @JsonProperty("salePriceLabel")
@@ -352,11 +291,6 @@ public class Product {
     this.salePriceLabel = salePriceLabel;
   }
 
-  public Product withSalePriceLabel(String salePriceLabel) {
-    this.salePriceLabel = salePriceLabel;
-    return this;
-  }
-
   @JsonAnyGetter
   public Map<String, Object> getAdditionalProperties() {
     return this.additionalProperties;
@@ -365,5 +299,31 @@ public class Product {
   @JsonAnySetter
   public void setAdditionalProperties(String name, Object value) {
     this.additionalProperties.put(name, value);
+  }
+
+  @Override public String toString() {
+    return "Product{" +
+        "id='" + id + '\'' +
+        ", name='" + name + '\'' +
+        ", type='" + type + '\'' +
+        ", currency='" + currency + '\'' +
+        ", price=" + price +
+        ", priceLabel='" + priceLabel + '\'' +
+        ", inStock=" + inStock +
+        ", locale='" + locale + '\'' +
+        ", description='" + description + '\'' +
+        ", clickUrl='" + clickUrl + '\'' +
+        ", image=" + image +
+        ", colors=" + colors +
+        ", sizes=" + sizes +
+        ", categories=" + categories +
+        ", seeMoreLabel='" + seeMoreLabel + '\'' +
+        ", seeMoreUrl='" + seeMoreUrl + '\'' +
+        ", extractDate='" + extractDate + '\'' +
+        ", favoriteCount=" + favoriteCount +
+        ", salePrice=" + salePrice +
+        ", salePriceLabel='" + salePriceLabel + '\'' +
+        ", additionalProperties=" + additionalProperties +
+        '}';
   }
 }

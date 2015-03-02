@@ -11,11 +11,16 @@ import com.project.monica.snobsinenobilitate.R;
 import com.project.monica.snobsinenobilitate.adapters.ProductListAdapter;
 import com.project.monica.snobsinenobilitate.events.NetworkErrorEvent;
 import com.project.monica.snobsinenobilitate.events.ProductListContentEvent;
-import com.project.monica.snobsinenobilitate.models.ProductListModel;
+import com.project.monica.snobsinenobilitate.models.ApiModel;
 import com.project.monica.snobsinenobilitate.models.pojo.collection.Product;
+import com.project.monica.snobsinenobilitate.models.pojo.collection.ProductList;
 import com.project.monica.snobsinenobilitate.utils.Logger;
 import com.squareup.otto.Subscribe;
 import java.util.List;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Header;
+import retrofit.client.Response;
 
 ///**
 // * Activities that contain this fragment must implement the
@@ -32,7 +37,7 @@ public class ProductListFragment extends BaseFragment
   private static final String TITLE = "title";
 
   // tmp Category
-  private String productCategory = "day-dresses";
+  private String mProductCategory = "day-dresses";
 
   private AutofitRecyclerView mRecyclerView;
 
@@ -100,7 +105,24 @@ public class ProductListFragment extends BaseFragment
     // TEMP synchronous request
     Logger.d("init dataset");
     // launch request
-    ProductListModel.getInstance().getCategoryProduct(productCategory, getActivity());
+    ApiModel.getInstance().getCategoryProductsAsync(mProductCategory, new Callback<ProductList>() {
+      @Override public void success(ProductList productList, Response response) {
+        // mock
+        for(Header h :response.getHeaders()) {
+          Logger.d("Response: name: " + h.getName()+ " value: "+ h.getValue());
+        }
+        Logger.d("Success response async callback retrofit");
+        mDataset = productList.getProducts();
+        initAdapter();
+      }
+
+      @Override public void failure(RetrofitError error) {
+
+        Logger.d("Error response async callback retrofit"+ error.getMessage());
+      }
+
+      //ProductListModel.getInstance().getCategoryProduct(productCategory, getActivity());
+    });
   }
 
   // when the data response will be retrieved ( from db) an event to update UI will be posted.

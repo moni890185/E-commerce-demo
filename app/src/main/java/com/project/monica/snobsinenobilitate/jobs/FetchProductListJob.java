@@ -5,7 +5,6 @@ import com.path.android.jobqueue.Params;
 import com.project.monica.snobsinenobilitate.database.dao.ProductListDAO;
 import com.project.monica.snobsinenobilitate.events.NetworkErrorEvent;
 import com.project.monica.snobsinenobilitate.events.ProductListContentEvent;
-import com.project.monica.snobsinenobilitate.models.ApiModel;
 import com.project.monica.snobsinenobilitate.models.DBModel;
 import com.project.monica.snobsinenobilitate.models.pojo.collection.ProductList;
 import com.project.monica.snobsinenobilitate.network.JacksonConverter;
@@ -56,7 +55,7 @@ public class FetchProductListJob extends BaseJob {
     Response response = null;
     JacksonConverter jsonConverter = new JacksonConverter();
     try {
-      response = ApiModel.getInstance().getCategoryProductsFromSyncRequest(mCategoryCode);
+      //response = ApiModel.getInstance().getCategoryProductsFromSyncRequest(mCategoryCode);
       productList = (ProductList)jsonConverter.fromBody(response.getBody(),ProductList.class);
       Logger.d("FetchProductListJob - getDataFromNetwork - productList retrieved "+ productList.toString());
       // add the product list in the DB.

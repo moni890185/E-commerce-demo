@@ -31,7 +31,6 @@ public class ProductListAdapter extends RecyclerView.Adapter {
   // Constructor
   public ProductListAdapter(Context context, List<Product> dataset,
       OnCustomItemClickListener itemListener) {
-    Logger.d("ProductListAdapter"+ dataset);
     mDataSet = dataset;
     mContext = context;
     mItemListener = itemListener;
@@ -47,7 +46,6 @@ public class ProductListAdapter extends RecyclerView.Adapter {
 
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-    Logger.d("onBindViewHolder");
     ViewHolder mHolder = (ViewHolder) holder;
     Product product = mDataSet.get(position);
     Logger.d("product: " + product.getName());

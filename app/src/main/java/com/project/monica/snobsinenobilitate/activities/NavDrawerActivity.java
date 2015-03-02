@@ -17,14 +17,8 @@ import com.project.monica.snobsinenobilitate.fragments.StoreFinderFragment;
 
 public class NavDrawerActivity extends BaseActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, ProductListFragment.OnProductListItemListener {
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
 
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
+    private NavigationDrawerFragment mNavigationDrawerFragment;
     private CharSequence mTitle;
 
     @Override

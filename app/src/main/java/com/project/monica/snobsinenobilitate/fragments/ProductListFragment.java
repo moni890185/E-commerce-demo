@@ -13,20 +13,9 @@ import com.project.monica.snobsinenobilitate.events.NetworkErrorEvent;
 import com.project.monica.snobsinenobilitate.events.ProductListContentEvent;
 import com.project.monica.snobsinenobilitate.models.ApiModel;
 import com.project.monica.snobsinenobilitate.models.pojo.collection.Product;
-import com.project.monica.snobsinenobilitate.models.pojo.collection.ProductList;
-import com.project.monica.snobsinenobilitate.utils.Logger;
 import com.squareup.otto.Subscribe;
 import java.util.List;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Header;
-import retrofit.client.Response;
 
-///**
-// * Activities that contain this fragment must implement the
-// * {@link ProductListFragment.OnFragmentInteractionListener} interface
-// * to handle interaction events.
-// */
 public class ProductListFragment extends BaseFragment
     implements ProductListAdapter.OnCustomItemClickListener {
 
@@ -35,19 +24,11 @@ public class ProductListFragment extends BaseFragment
   }
 
   private static final String TITLE = "title";
-
-  // tmp Category
-  private String mProductCategory = "day-dresses";
-
-  private AutofitRecyclerView mRecyclerView;
-
-  // Adapter
-  private ProductListAdapter mProductListAdapter;
-
-  /* Dataset with the images to insert in the cards */
-  private List<Product> mDataset;
   private int mTitle;
-
+  private List<Product> mDataset;
+  private String mProductCategory = "day-dresses";
+  private AutofitRecyclerView mRecyclerView;
+  private ProductListAdapter mProductListAdapter;
   private OnProductListItemListener mProductListItemListener;
 
   public static ProductListFragment newInstance(int title) {
@@ -71,13 +52,15 @@ public class ProductListFragment extends BaseFragment
     initDataset();
   }
 
+  private void initDataset() {
+    ApiModel.getInstance().getCategoryProductsAsync(mProductCategory);
+  }
+
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
     View v = inflater.inflate(R.layout.fragment_product_list, container, false);
     mRecyclerView = (AutofitRecyclerView) v.findViewById(R.id.recycler_view_product_list);
-    // RecyclerView can perform several optimizations if it can know in advance that changes in adapter content cannot change the size of the RecyclerView itself.
     mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     mRecyclerView.setHasFixedSize(true);
     return v;
@@ -100,35 +83,8 @@ public class ProductListFragment extends BaseFragment
     mProductListItemListener = null;
   }
 
-  private void initDataset() {
-
-    // TEMP synchronous request
-    Logger.d("init dataset");
-    // launch request
-    ApiModel.getInstance().getCategoryProductsAsync(mProductCategory, new Callback<ProductList>() {
-      @Override public void success(ProductList productList, Response response) {
-        // mock
-        for(Header h :response.getHeaders()) {
-          Logger.d("Response: name: " + h.getName()+ " value: "+ h.getValue());
-        }
-        Logger.d("Success response async callback retrofit");
-        mDataset = productList.getProducts();
-        initAdapter();
-      }
-
-      @Override public void failure(RetrofitError error) {
-
-        Logger.d("Error response async callback retrofit"+ error.getMessage());
-      }
-
-      //ProductListModel.getInstance().getCategoryProduct(productCategory, getActivity());
-    });
-  }
-
-  // when the data response will be retrieved ( from db) an event to update UI will be posted.
   @Subscribe
   public void onCategoryProductsReceived(ProductListContentEvent event) {
-    Logger.d("onCategoryProductsReceived - ProductListContentEvent - onSuccess product");
     mDataset = event.getProductList().getProducts();
     initAdapter();
   }
@@ -139,7 +95,6 @@ public class ProductListFragment extends BaseFragment
   }
 
   private void initAdapter() {
-    Logger.d("mDataset len" + mDataset.size());
     if (mProductListAdapter == null) {
       mProductListAdapter = new ProductListAdapter(getActivity(), mDataset, this);
       mRecyclerView.setAdapter(mProductListAdapter);

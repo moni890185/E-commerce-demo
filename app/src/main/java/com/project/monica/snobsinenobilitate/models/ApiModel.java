@@ -1,10 +1,12 @@
 package com.project.monica.snobsinenobilitate.models;
 
 import com.project.monica.snobsinenobilitate.events.NetworkErrorEvent;
+import com.project.monica.snobsinenobilitate.events.ProductDetailContentEvent;
 import com.project.monica.snobsinenobilitate.events.ProductListContentEvent;
+import com.project.monica.snobsinenobilitate.models.pojo.collection.Product;
 import com.project.monica.snobsinenobilitate.models.pojo.collection.ProductList;
-import com.project.monica.snobsinenobilitate.network.ApiUtils;
 import com.project.monica.snobsinenobilitate.network.ApiRequestsInterface;
+import com.project.monica.snobsinenobilitate.network.ApiUtils;
 import com.project.monica.snobsinenobilitate.network.JacksonConverter;
 import com.project.monica.snobsinenobilitate.otto.BusProvider;
 import com.project.monica.snobsinenobilitate.utils.Logger;
@@ -15,7 +17,6 @@ import java.io.IOException;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import retrofit.Callback;
-import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Header;
@@ -42,14 +43,6 @@ public class ApiModel {
         .setEndpoint(ApiUtils.BASE_URL)
         .setConverter(new JacksonConverter())
         .setClient(getHttpClient())
-        .setRequestInterceptor(new RequestInterceptor() {
-          @Override
-          public void intercept(RequestFacade request) {
-            request.addHeader("Accept", "application/json;versions=1");
-            int maxAge = 1800;
-            request.addHeader("Cache-Control", "public, max-age=" + maxAge);
-          }
-        })
         .build();
 
     mRetailerService = restAdapter.create(ApiRequestsInterface.class);
@@ -73,8 +66,8 @@ public class ApiModel {
     return new OkClient(httpClient);
   }
 
-  public void getCategoryProductsAsync(String categoryProducts) {
-    mRetailerService.getCategoryProductsAsync(ApiUtils.FORMAT, ApiUtils.API_KEY_PID,
+  public void getCategoryProducts(String categoryProducts) {
+    mRetailerService.getCategoryProducts(ApiUtils.FORMAT, ApiUtils.API_KEY_PID,
         categoryProducts, new Callback<ProductList>() {
           @Override public void success(ProductList productList, Response response) {
             for (Header h : response.getHeaders()) {
@@ -85,6 +78,19 @@ public class ApiModel {
 
           @Override public void failure(RetrofitError error) {
             Logger.d("Error response retrofit due to: " + error.getMessage());
+            BusProvider.getInstance().post(new NetworkErrorEvent(error));
+          }
+        });
+  }
+
+  public void getProductDetail(String mProductId) {
+    mRetailerService.getProductDetail(mProductId, ApiUtils.FORMAT, ApiUtils.API_KEY_PID,
+        new Callback<Product>() {
+          @Override public void success(Product product, Response response) {
+            BusProvider.getInstance().post(new ProductDetailContentEvent(product));
+          }
+
+          @Override public void failure(RetrofitError error) {
             BusProvider.getInstance().post(new NetworkErrorEvent(error));
           }
         });

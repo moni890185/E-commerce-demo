@@ -3,45 +3,39 @@ package com.project.monica.snobsinenobilitate.fragments;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.project.monica.snobsinenobilitate.R;
+import com.project.monica.snobsinenobilitate.activities.ProductDetailActivity;
+import com.project.monica.snobsinenobilitate.events.NetworkErrorEvent;
+import com.project.monica.snobsinenobilitate.events.ProductDetailContentEvent;
+import com.project.monica.snobsinenobilitate.models.ApiModel;
+import com.project.monica.snobsinenobilitate.models.pojo.collection.Product;
+import com.project.monica.snobsinenobilitate.utils.Logger;
+import com.squareup.otto.Subscribe;
+import com.squareup.picasso.Picasso;
 
-/**
- * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
- * {@link ProductDetailFragment.OnFragmentInteractionListener} interface to handle interaction
- * events. Use the {@link ProductDetailFragment#newInstance} factory method to create an instance of
- * this fragment.
- */
-public class ProductDetailFragment extends BaseFragment {
-  // TODO: Rename parameter arguments, choose names that match
-  // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-  private static final String ARG_PARAM1 = "param1";
-  private static final String ARG_PARAM2 = "param2";
+public class ProductDetailFragment extends BaseFragment implements View.OnClickListener {
 
-  // TODO: Rename and change types of parameters
-  private String mParam1;
-  private String mParam2;
+  private ImageView mImageView;
+  private TextView mPriceView;
+  private TextView mTitleView;
+  private TextView mDescription;
+  private Product mProduct;
+  private Button mSaveButton;
+  private Button mBuyButton;
+  private String mProductId;
 
   private OnFragmentInteractionListener mListener;
 
-  /**
-   * Use this factory method to create a new instance of this fragment using the provided
-   * parameters.
-   *
-   * @param param1 Parameter 1.
-   * @param param2 Parameter 2.
-   * @return A new instance of fragment ProductDetailFragment.
-   */
-  // TODO: Rename and change types and number of parameters
-  public static ProductDetailFragment newInstance(String param1, String param2) {
+  public static ProductDetailFragment newInstance(String productID) {
     ProductDetailFragment fragment = new ProductDetailFragment();
     Bundle args = new Bundle();
-    args.putString(ARG_PARAM1, param1);
-    args.putString(ARG_PARAM2, param2);
+    args.putString(ProductDetailActivity.PRODUCT_ID, productID);
     fragment.setArguments(args);
     return fragment;
   }
@@ -54,16 +48,44 @@ public class ProductDetailFragment extends BaseFragment {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {
-      mParam1 = getArguments().getString(ARG_PARAM1);
-      mParam2 = getArguments().getString(ARG_PARAM2);
+      mProductId = getArguments().getString(ProductDetailActivity.PRODUCT_ID);
     }
+    ApiModel.getInstance().getProductDetail(mProductId);
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_product_detail, container, false);
+
+    View v = inflater.inflate(R.layout.fragment_product_detail, container, false);
+    initViews(v);
+    return v;
+  }
+
+  @Subscribe
+  public void onProductDetailContentRetrieved(ProductDetailContentEvent event) {
+    Product productReceived = event.getProduct();
+    if (productReceived.getCode().equals(mProductId)) {
+      mProduct = productReceived;
+      insertContent();
+    }
+  }
+
+  @Subscribe
+  public void onNetworkErrorEvent(NetworkErrorEvent event) {
+    //show error view
+  }
+
+  private void initViews(View v) {
+    mImageView = (ImageView) v.findViewById(R.id.product_detail_img);
+    mPriceView = (TextView) v.findViewById(R.id.product_detail_price);
+    mTitleView = (TextView) v.findViewById(R.id.product_detail_title);
+    mBuyButton = (Button) v.findViewById(R.id.product_detail_buy_button);
+    mSaveButton = (Button) v.findViewById(R.id.product_detail_save_button);
+
+
+    mBuyButton.setOnClickListener(this);
+    mSaveButton.setOnClickListener(this);
   }
 
   public void onButtonPressed(Uri uri) {
@@ -83,10 +105,44 @@ public class ProductDetailFragment extends BaseFragment {
     }
   }
 
+  private void insertContent() {
+    mPriceView.setText(mProduct.getPriceLabel());
+    // the small image
+    String imageUrl = mProduct.getImage().getSizes().getOriginal().getUrl();
+    Logger.d("img url: " + imageUrl);
+
+    Picasso.with(getActivity()).load(imageUrl).into(mImageView);
+
+    mTitleView.setText(mProduct.getName());
+  }
+
   @Override
   public void onDetach() {
     super.onDetach();
     mListener = null;
+  }
+
+  @Override
+  public void onClick(View v) {
+    switch (v.getId()) {
+      case R.id.product_detail_buy_button:
+        onBuyButtonPressed();
+        break;
+
+      case R.id.product_detail_save_button:
+        onSaveButtonPressed();
+        break;
+    }
+  }
+
+  private void onSaveButtonPressed() {
+
+    //TODO
+  }
+
+  private void onBuyButtonPressed() {
+
+    //TODO
   }
 
   public interface OnFragmentInteractionListener {

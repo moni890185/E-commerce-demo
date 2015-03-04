@@ -32,6 +32,4 @@ public class SplashActivity extends Activity {
         h.sendEmptyMessageDelayed(LAUNCH_INTENT, MSG_DELAY);
     }
 
-
-
 }

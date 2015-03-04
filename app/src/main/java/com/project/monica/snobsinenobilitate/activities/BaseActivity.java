@@ -1,6 +1,11 @@
 package com.project.monica.snobsinenobilitate.activities;
 
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.ViewStub;
+import android.widget.Toolbar;
+import com.project.monica.snobsinenobilitate.R;
 import com.project.monica.snobsinenobilitate.otto.ScopedBus;
 
 /**
@@ -12,6 +17,42 @@ public abstract class BaseActivity extends FragmentActivity {
 
   protected ScopedBus getBus() {
     return scopedBus;
+  }
+
+  protected abstract int getLayoutResourceId();
+
+  private Toolbar toolbar;
+
+  @Override public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+    super.onCreate(savedInstanceState, persistentState);
+
+    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    initialiseLayout();
+    if (isToolbarShown()) {
+      initialiseToolbar();
+    }
+  }
+
+  public Toolbar getToolbar() {
+    return toolbar;
+  }
+
+  private void initialiseLayout() {
+    setContentView(R.layout.activity_base);
+
+    ViewStub viewStub = (ViewStub) findViewById(R.id.stub);
+    viewStub.setLayoutResource(getLayoutResourceId());
+    viewStub.inflate();
+  }
+
+  private void initialiseToolbar() {
+    toolbar = (Toolbar) findViewById(R.id.toolbar);
+    toolbar.setTitle(getString(R.string.app_name));
+    setActionBar(toolbar);
+  }
+
+  boolean isToolbarShown() {
+    return true;
   }
 
   @Override public void onPause() {

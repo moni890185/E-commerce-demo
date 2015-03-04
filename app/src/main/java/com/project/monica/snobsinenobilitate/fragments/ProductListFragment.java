@@ -53,7 +53,7 @@ public class ProductListFragment extends BaseFragment
   }
 
   private void initDataset() {
-    ApiModel.getInstance().getCategoryProductsAsync(mProductCategory);
+    ApiModel.getInstance().getCategoryProducts(mProductCategory);
   }
 
   @Override

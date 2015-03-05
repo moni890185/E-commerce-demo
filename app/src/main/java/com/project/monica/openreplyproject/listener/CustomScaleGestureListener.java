@@ -3,8 +3,6 @@ package com.project.monica.openreplyproject.listener;
 import android.graphics.Matrix;
 import android.view.ScaleGestureDetector;
 
-import timber.log.Timber;
-
 /**
  * Created by monica on 08/01/2015.
  */
@@ -21,7 +19,7 @@ public class CustomScaleGestureListener extends ScaleGestureDetector.SimpleOnSca
 
 
     public void setScalePinchListener(ScalePinchListener mScalePinchAdapterListener, ScalePinchListener mScalePinchActivityListener) {
-        Timber.d("Monica", " ScaleGestureListener - setProductListAdapterListener" + mScalePinchAdapterListener);
+
         this.mScalePinchAdapterListener = mScalePinchAdapterListener;
         this.mScalePinchActivityListener = mScalePinchActivityListener;
     }
@@ -29,7 +27,6 @@ public class CustomScaleGestureListener extends ScaleGestureDetector.SimpleOnSca
 
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
-        Timber.d("Monica", " ScaleGestureListener - onScale!!!!!!!!!!!!!!");
         scale *= detector.getScaleFactor();
         scale = Math.max(0.1f, Math.min(scale, 5.0f));
         matrix.setScale(scale, scale);

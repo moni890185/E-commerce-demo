@@ -1,44 +1,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:paddingLeft="@dimen/activity_horizontal_margin"
+  android:paddingRight="@dimen/activity_horizontal_margin"
+  android:orientation="vertical"
+  android:paddingTop="@dimen/activity_vertical_margin"
+  android:paddingBottom="@dimen/activity_vertical_margin"
+  tools:context="com.project.monica.openreplyproject.activities.ProductDetailActivity">
+
+
+  <ImageView
+    android:id="@+id/product_detail_img"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.project.monica.openreplyproject.activities.ProductDetailActivity">
+    android:scaleType="centerCrop"
+    android:layout_height="wrap_content" />
 
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
 
+    <TextView
+      android:id="@+id/product_detail_title"
+      android:layout_width="wrap_content"
+      android:text="Title"
+      android:layout_weight="1"
+      android:shadowDx="1"
+      android:shadowDy="1"
+      android:shadowRadius="2"
+      android:textColor="@android:color/white"
+      android:textSize="@dimen/abc_text_size_small_material"
+      android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/product_detail_img"
-        android:layout_width="match_parent"
-        android:scaleType="centerCrop"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/product_detail_title"
-            android:layout_width="wrap_content"
-            android:text="Title"
-            android:layout_weight="1"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/abc_text_size_medium_material"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/product_detail_price"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="price"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/abc_text_size_medium_material"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+    <TextView
+      android:id="@+id/product_detail_price"
+      android:layout_width="wrap_content"
+      android:layout_weight="1"
+      android:gravity="right"
+      android:text="price"
+      android:shadowDx="1"
+      android:shadowDy="1"
+      android:shadowRadius="2"
+      android:textColor="@android:color/white"
+      android:textSize="@dimen/abc_text_size_small_material"
+      android:layout_height="wrap_content" />
+  </LinearLayout>
 </LinearLayout>

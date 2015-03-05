@@ -12,14 +12,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.project.monica.openreplyproject.R;
 import com.project.monica.openreplyproject.listener.CustomScaleGestureListener;
 import com.project.monica.openreplyproject.model.Product;
-
 import java.util.ArrayList;
-
-import timber.log.Timber;
 
 /**
  * Created by monica on 17/12/2014.
@@ -80,7 +76,6 @@ public class ProductListAdapter extends RecyclerView.Adapter implements CustomSc
     private void editViewsIfPinchAction(ViewHolder mHolder) {
         // matrix is not null id user pinched the items.
         if (mMatrix != null) {
-            Timber.d("NOT USING MATRIX - but resizing");
             // Card view size
             float cardWidth = mContext.getResources().getDimension(R.dimen.card_view_width_half);
             float cardHeight = mContext.getResources().getDimension(R.dimen.card_view_height_half);
@@ -107,7 +102,6 @@ public class ProductListAdapter extends RecyclerView.Adapter implements CustomSc
 
     @Override
     public void onScaleAction(Matrix matrix) {
-        Timber.d("ProductListAdapter - onScaleAction called");
         mMatrix = matrix;
         notifyDataSetChanged();
     }

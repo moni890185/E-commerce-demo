@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<transitionSet
-    android:transitionOrdering="together"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    android:transitionOrdering="together">
     <changeImageTransform android:interpolator="@android:interpolator/linear"/>
-    <changeBounds android:interpolator="@android:interpolator/linear" />
-    <!--<changeImageTransform/>-->
-    <!--android:duration="10000" />-->
-    <!--<changeClipBounds/>-->
-
+    <changeBounds android:interpolator="@android:interpolator/linear"/>
 </transitionSet>

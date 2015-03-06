@@ -16,7 +16,7 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_store_finder">StoreFinderActivity</string>
 
-    <string name="title_section1">About</string>
+    <string name="title_section1">Home</string>
     <string name="title_section2">Collection</string>
     <string name="title_section3">Stores</string>
     <string name="title_section4">Contact us</string>

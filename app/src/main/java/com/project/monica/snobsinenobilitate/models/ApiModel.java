@@ -1,14 +1,14 @@
 package com.project.monica.snobsinenobilitate.models;
 
-import com.project.monica.snobsinenobilitate.events.NetworkErrorEvent;
-import com.project.monica.snobsinenobilitate.events.ProductDetailContentEvent;
-import com.project.monica.snobsinenobilitate.events.ProductListContentEvent;
-import com.project.monica.snobsinenobilitate.models.pojo.collection.Product;
-import com.project.monica.snobsinenobilitate.models.pojo.collection.ProductList;
-import com.project.monica.snobsinenobilitate.network.ApiRequestsInterface;
-import com.project.monica.snobsinenobilitate.network.ApiUtils;
-import com.project.monica.snobsinenobilitate.network.JacksonConverter;
-import com.project.monica.snobsinenobilitate.otto.BusProvider;
+import com.project.monica.snobsinenobilitate.bus.events.NetworkErrorEvent;
+import com.project.monica.snobsinenobilitate.bus.events.ProductDetailContentEvent;
+import com.project.monica.snobsinenobilitate.bus.events.ProductListContentEvent;
+import com.project.monica.snobsinenobilitate.models.pojo.Product;
+import com.project.monica.snobsinenobilitate.models.pojo.ProductList;
+import com.project.monica.snobsinenobilitate.models.rest.ApiRequestsInterface;
+import com.project.monica.snobsinenobilitate.models.rest.ApiUtils;
+import com.project.monica.snobsinenobilitate.models.rest.JacksonConverter;
+import com.project.monica.snobsinenobilitate.bus.BusProvider;
 import com.project.monica.snobsinenobilitate.utils.Logger;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;

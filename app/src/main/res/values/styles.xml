@@ -1,13 +1,18 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"></style>
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"></style>
 
-    <style name="ButtonStyle" parent="Base.TextAppearance.AppCompat.Button">
-        <item name="android:layout_width">@dimen/button_diameter_size</item>
-        <item name="android:layout_height">@dimen/button_diameter_size</item>
-        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+  <style name="ButtonStyle" parent="Base.TextAppearance.AppCompat.Button">
+    <item name="android:layout_width">@dimen/button_diameter_size</item>
+    <item name="android:layout_height">@dimen/button_diameter_size</item>
+    <item name="android:background">@drawable/grey_solid_shape</item>
+    <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+  </style>
 
-
-    </style>
+  <style name="ButtonDetailStyle" parent="Base.TextAppearance.AppCompat.Button">
+    <item name="android:layout_width">@dimen/button_larger_diameter_size</item>
+    <item name="android:layout_height">@dimen/button_larger_diameter_size</item>
+    <item name="android:background">@drawable/grey_solid_shape</item>
+  </style>
 </resources>

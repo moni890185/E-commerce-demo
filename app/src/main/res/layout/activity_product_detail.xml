@@ -3,7 +3,7 @@
   android:layout_width="match_parent"
   android:orientation="vertical"
   android:layout_height="match_parent"
-  tools:context="com.project.monica.snobsinenobilitate.activities.ProductDetailActivity">
+  tools:context="com.project.monica.snobsinenobilitate.views.activities.ProductDetailActivity">
 
   <include layout="@layout/toolbar" />
 

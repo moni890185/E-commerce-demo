@@ -13,6 +13,9 @@ import com.project.monica.snobsinenobilitate.bus.ScopedBus;
  */
 public abstract class BaseActivity extends FragmentActivity {
 
+  // TODO - IN PROGRESS: to make it more scalable, i am going to extend this class to avoid to insert the toolbar in every Activity
+  // here i am inserting also common activity navigation and registration of the activity in the bus.
+
   private final ScopedBus scopedBus = new ScopedBus();
 
   protected ScopedBus getBus() {

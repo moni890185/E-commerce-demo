@@ -31,6 +31,7 @@ import java.util.List;
 
 public class ProductDetailFragment extends BaseFragment implements View.OnClickListener {
 
+  // todo use Butterknife and create custom view for color and size card.
   private ImageView mImageView;
   private TextView mPriceView;
   private TextView mTitleView;

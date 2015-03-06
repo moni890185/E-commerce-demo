@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.project.monica.snobsinenobilitate.R;
-import com.project.monica.snobsinenobilitate.utils.Logger;
 import java.util.List;
 
 /**
@@ -34,7 +33,6 @@ public abstract class ProductFeaturesAdapter<T extends Object> extends RecyclerV
   @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
     ColorsViewHolder mColorHolder = (ColorsViewHolder) holder;
     Button mButton = mColorHolder.getItem();
-    Logger.d("setting color - color size" + mDataset);
     setButtonFeature(position, mButton);
   }
 

@@ -23,21 +23,15 @@ public class ColorsAdapter extends ProductFeaturesAdapter {
 
   @Override protected void setButtonFeature(final int position, final Button mButton) {
     {
-      Logger.d("color" + getDataset().get(position).getName());
+      Logger.d("Color:" + getDataset().get(position).getName());
       Target target = new Target() {
         @Override
         public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
           Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette palette) {
-              Logger.d("dark muted "
-                  + palette.getDarkMutedSwatch()
-                  + " palette: "
-                  + palette.getDarkVibrantSwatch()
-                  + " light vibrant: "
-                  + palette.getLightVibrantSwatch());
               Palette.Swatch vibrantSwatch = palette.getVibrantSwatch();
+              Logger.d("Palette - vibrantSwatch: "+ vibrantSwatch);
               if (vibrantSwatch != null) {
-
                 mButton.getBackground()
                     .setColorFilter(vibrantSwatch.getRgb(), PorterDuff.Mode.MULTIPLY);
               } else {
@@ -46,7 +40,6 @@ public class ColorsAdapter extends ProductFeaturesAdapter {
             }
           });
         }
-
         @Override public void onBitmapFailed(Drawable errorDrawable) {
         }
 

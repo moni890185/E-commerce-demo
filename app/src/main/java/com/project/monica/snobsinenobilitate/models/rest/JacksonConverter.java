@@ -1,13 +1,10 @@
 package com.project.monica.snobsinenobilitate.models.rest;
 
-import android.text.TextUtils;
-import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.monica.snobsinenobilitate.utils.DeveloperConstants;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
@@ -51,58 +48,5 @@ public class JacksonConverter implements Converter {
     } catch (UnsupportedEncodingException e) {
       throw new AssertionError(e);
     }
-  }
-
-  public static <T> T getItem(String json, Class<T> clazz) {
-    if (!TextUtils.isEmpty(json)) {
-
-      try {
-        return objectMapper.readValue(json, clazz);
-      } catch (JsonParseException e) {
-        if (DeveloperConstants.LOGGING_ENABLED) {
-          e.printStackTrace();
-        }
-      } catch (JsonMappingException e) {
-        if (DeveloperConstants.LOGGING_ENABLED) {
-          e.printStackTrace();
-        }
-      } catch (IOException e) {
-        if (DeveloperConstants.LOGGING_ENABLED) {
-          e.printStackTrace();
-        }
-      } catch (Exception e) {
-        if (DeveloperConstants.LOGGING_ENABLED) {
-          e.printStackTrace();
-        }
-      }
-    }
-    return null;
-  }
-
-  public static String toJson(Object item) {
-    if (item != null) {
-
-      try {
-        return objectMapper.writeValueAsString(item);
-      } catch (JsonGenerationException e) {
-        if (DeveloperConstants.LOGGING_ENABLED) {
-          e.printStackTrace();
-        }
-      } catch (JsonMappingException e) {
-        if (DeveloperConstants.LOGGING_ENABLED) {
-          e.printStackTrace();
-        }
-      } catch (IOException e) {
-        if (DeveloperConstants.LOGGING_ENABLED) {
-          e.printStackTrace();
-        }
-      } catch (Exception e) {
-        if (DeveloperConstants.LOGGING_ENABLED) {
-          e.printStackTrace();
-        }
-      }
-    }
-
-    return null;
   }
 }

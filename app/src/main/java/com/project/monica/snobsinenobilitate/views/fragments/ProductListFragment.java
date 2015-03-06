@@ -24,7 +24,7 @@ public class ProductListFragment extends BaseFragment
   public interface OnProductListItemListener {
     public void onProductListItemClick(String productId);
   }
-
+  // todo in the navigation menu i will manage the categories/subcategories, this collection is tmp the day-dresses category.
   private List<Product> mDataset;
   private String mProductCategory = "day-dresses";
   private AutofitRecyclerView mRecyclerView;
@@ -51,12 +51,7 @@ public class ProductListFragment extends BaseFragment
 
   private void initDataset() {
     ApiModel.getInstance().getCategoryProducts(mProductCategory);
-    updateViews();
-  }
-
-  private void updateViews() {
-    mProgressView.start();
-    mErrorView.setVisibility(View.GONE);
+    showLoadingView();
   }
 
   @Override
@@ -72,8 +67,8 @@ public class ProductListFragment extends BaseFragment
     mRecyclerView = (AutofitRecyclerView) v.findViewById(R.id.recycler_view_product_list);
     mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     mRecyclerView.setHasFixedSize(true);
-    mProgressView = (ProgressBarView)v.findViewById(R.id.product_list_progress_view);
-    mErrorView = (TextView)v.findViewById(R.id.error_view);
+    mProgressView = (ProgressBarView) v.findViewById(R.id.product_list_progress_view);
+    mErrorView = (TextView) v.findViewById(R.id.error_view);
   }
 
   @Override
@@ -94,11 +89,11 @@ public class ProductListFragment extends BaseFragment
   }
 
   private void initAdapter() {
-      if (mProductListAdapter == null) {
-        Logger.d("adapter is null");
-        mProductListAdapter = new ProductListAdapter(getActivity(), mDataset, this);
-      }
-      mRecyclerView.setAdapter(mProductListAdapter);
+    if (mProductListAdapter == null) {
+      Logger.d("adapter is null");
+      mProductListAdapter = new ProductListAdapter(getActivity(), mDataset, this);
+    }
+    mRecyclerView.setAdapter(mProductListAdapter);
   }
 
   @Override
@@ -108,20 +103,36 @@ public class ProductListFragment extends BaseFragment
     }
   }
 
+  private void showContentView() {
+    mProgressView.stop();
+    mErrorView.setVisibility(View.GONE);
+    mRecyclerView.setVisibility(View.VISIBLE);
+  }
+
+  private void showErrorView() {
+    mProgressView.stop();
+    mRecyclerView.setVisibility(View.GONE);
+    mErrorView.setVisibility(View.VISIBLE);
+  }
+
+  private void showLoadingView() {
+    mProgressView.start();
+    mErrorView.setVisibility(View.GONE);
+    mRecyclerView.setVisibility(View.GONE);
+  }
+
   // Subscribers
 
   @Subscribe
   public void onCategoryProductsReceived(ProductListContentEvent event) {
     mDataset = event.getProductList().getProducts();
     initAdapter();
-    mProgressView.stop();
-    mErrorView.setVisibility(View.GONE);
+    showContentView();
   }
 
   @Subscribe
   public void onNetworkErrorEvent(NetworkErrorEvent event) {
-    mProgressView.stop();
-    mErrorView.setVisibility(View.VISIBLE);
-    // TODO implement error view.
+    showErrorView();
+    Logger.d("Retrofit Error: " + event.getError().getMessage());
   }
 }

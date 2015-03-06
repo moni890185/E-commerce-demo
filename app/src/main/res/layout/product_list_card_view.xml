@@ -4,7 +4,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-
+  <!--todo create style-->
   <android.support.v7.widget.CardView
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
@@ -33,6 +33,8 @@
       android:background="@color/card_view_price_holder_background"
       android:layout_height="@dimen/card_view_price_holder_height">
 
+
+      <!--todo create style-->
       <TextView
         android:id="@+id/card_title_text"
         android:paddingTop="@dimen/card_view_padding_top"
@@ -49,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+      <!--todo create style-->
       <TextView
         android:id="@+id/card_price_text"
         android:gravity="center"

@@ -9,8 +9,7 @@ import android.widget.ImageView;
 import com.project.monica.snobsinenobilitate.R;
 
 /**
- * Custom Progress Bar. Use {@link #start()} and {@link #stop()} to start and stop respectively the
- * rotating animation.
+ * Custom Progress Bar.
  */
 public class ProgressBarView extends ImageView {
 

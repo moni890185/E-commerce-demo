@@ -20,17 +20,15 @@ import com.project.monica.snobsinenobilitate.views.fragments.StoreFinderFragment
 public class NavDrawerActivity extends FragmentActivity
     implements NavigationDrawerFragment.NavigationDrawerCallbacks,
     ProductListFragment.OnProductListItemListener {
+  // todo i will create the abstract class for the navigation menu that will extend BaseActivity, so only the activities that want the navigation extend this abstract class, otherwise they will extend directly the BaseActivity.
 
-  public static final int COLLECTION = 1;
   public static final int HOME = 0;
+  public static final int COLLECTION = 1;
   public static final int STORE_FINDER = 2;
   public static final int CONTACT_US = 3;
+
   private NavigationDrawerFragment mNavigationDrawerFragment;
   private CharSequence mTitle;
-
-  //@Override protected int getLayoutResourceId() {
-  //  return R.layout.activity_nav_drawer;
-  //}
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

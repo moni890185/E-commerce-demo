@@ -15,7 +15,7 @@ public interface ApiRequestsInterface {
 
   // Product List
   @Headers("Cache-Control:public, max-age=1800")
-  @GET("/products") void getCategoryProducts(@Query("format") String json,
+  @GET("/products") void getCategoryProductList(@Query("format") String json,
       @Query("pid") String apiKey, @Query("cat") String category,
       Callback<ProductList> productResponseCallback);
 

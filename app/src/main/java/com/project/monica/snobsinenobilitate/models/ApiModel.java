@@ -67,17 +67,14 @@ public class ApiModel {
   }
 
   public void getCategoryProducts(String categoryProducts) {
-    mRetailerService.getCategoryProducts(ApiUtils.FORMAT, ApiUtils.API_KEY_PID,
+    mRetailerService.getCategoryProductList(ApiUtils.FORMAT, ApiUtils.API_KEY_PID,
         categoryProducts, new Callback<ProductList>() {
           @Override public void success(ProductList productList, Response response) {
-            for (Header h : response.getHeaders()) {
-              Logger.d("Response: name: " + h.getName() + " value: " + h.getValue());
-            }
+            showHeaderLog(response);
             BusProvider.getInstance().post(new ProductListContentEvent(productList));
           }
 
           @Override public void failure(RetrofitError error) {
-            Logger.d("Error response retrofit due to: " + error.getMessage());
             BusProvider.getInstance().post(new NetworkErrorEvent(error));
           }
         });
@@ -94,6 +91,12 @@ public class ApiModel {
             BusProvider.getInstance().post(new NetworkErrorEvent(error));
           }
         });
+  }
+
+  private void showHeaderLog(Response response) {
+    for (Header h : response.getHeaders()) {
+      Logger.d("Response: name: " + h.getName() + " value: " + h.getValue());
+    }
   }
 }
 

@@ -11,4 +11,9 @@ public class NetworkErrorEvent {
   public NetworkErrorEvent(RetrofitError error) {
     this.error = error;
   }
+
+  public RetrofitError getError()
+  {
+    return error;
+  }
 }

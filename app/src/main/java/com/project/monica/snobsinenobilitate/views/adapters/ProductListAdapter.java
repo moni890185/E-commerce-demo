@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.project.monica.snobsinenobilitate.R;
 import com.project.monica.snobsinenobilitate.models.pojo.Product;
-import com.project.monica.snobsinenobilitate.utils.Logger;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
@@ -48,14 +47,11 @@ public class ProductListAdapter extends RecyclerView.Adapter {
   public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
     ViewHolder mHolder = (ViewHolder) holder;
     Product product = mDataSet.get(position);
-    Logger.d("product: " + product.getName());
-
     //// insert Content
     mHolder.getCardPriceView().setText(product.getPriceLabel());
     mHolder.getCardTitleView().setText(product.getName());
 
     String imageUrl = product.getImage().getSizes().getOriginal().getUrl();
-    Logger.d("img url: "+ imageUrl);
 
     Picasso.with(mContext).load(imageUrl).into(mHolder.getCardImageView());
 

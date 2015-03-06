@@ -45,5 +45,7 @@ I prodotti S.nob sono unici nel loro genere: una fusione tra originalità e semp
 
 <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="network_error_message">Network Error...Try Again Later</string>
+
 
 </resources>

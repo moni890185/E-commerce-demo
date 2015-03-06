@@ -6,6 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import com.project.monica.snobsinenobilitate.AutofitRecyclerView;
 import com.project.monica.snobsinenobilitate.R;
 import com.project.monica.snobsinenobilitate.bus.events.NetworkErrorEvent;
@@ -27,6 +28,8 @@ public class ProductListFragment extends BaseFragment
   private List<Product> mDataset;
   private String mProductCategory = "day-dresses";
   private AutofitRecyclerView mRecyclerView;
+  private ProgressBarView mProgressView;
+  private TextView mErrorView;
   private ProductListAdapter mProductListAdapter;
   private OnProductListItemListener mProductListItemListener;
 
@@ -48,6 +51,12 @@ public class ProductListFragment extends BaseFragment
 
   private void initDataset() {
     ApiModel.getInstance().getCategoryProducts(mProductCategory);
+    updateViews();
+  }
+
+  private void updateViews() {
+    mProgressView.start();
+    mErrorView.setVisibility(View.GONE);
   }
 
   @Override
@@ -63,6 +72,8 @@ public class ProductListFragment extends BaseFragment
     mRecyclerView = (AutofitRecyclerView) v.findViewById(R.id.recycler_view_product_list);
     mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     mRecyclerView.setHasFixedSize(true);
+    mProgressView = (ProgressBarView)v.findViewById(R.id.product_list_progress_view);
+    mErrorView = (TextView)v.findViewById(R.id.error_view);
   }
 
   @Override
@@ -103,10 +114,14 @@ public class ProductListFragment extends BaseFragment
   public void onCategoryProductsReceived(ProductListContentEvent event) {
     mDataset = event.getProductList().getProducts();
     initAdapter();
+    mProgressView.stop();
+    mErrorView.setVisibility(View.GONE);
   }
 
   @Subscribe
   public void onNetworkErrorEvent(NetworkErrorEvent event) {
+    mProgressView.stop();
+    mErrorView.setVisibility(View.VISIBLE);
     // TODO implement error view.
   }
 }

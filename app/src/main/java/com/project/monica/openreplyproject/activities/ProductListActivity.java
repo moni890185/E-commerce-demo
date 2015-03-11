@@ -13,7 +13,6 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.Window;
 import com.project.monica.openreplyproject.R;
-import com.project.monica.openreplyproject.Utils.GUIUtils;
 import com.project.monica.openreplyproject.adapter.ProductListAdapter;
 import com.project.monica.openreplyproject.configuration.DeveloperConstants;
 import com.project.monica.openreplyproject.customrecyclerview.AutofitRecyclerView;
@@ -22,7 +21,8 @@ import com.project.monica.openreplyproject.model.Product;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainActivity extends Activity implements CustomScaleGestureListener.ScalePinchListener,
+public class ProductListActivity extends Activity
+    implements CustomScaleGestureListener.ScalePinchListener,
     ProductListAdapter.OnCustomClickListener {
 
   private AutofitRecyclerView mRecyclerView;
@@ -56,11 +56,7 @@ public class MainActivity extends Activity implements CustomScaleGestureListener
     mRecyclerView.setHasFixedSize(true);
     mRecyclerView.setItemAnimator(new DefaultItemAnimator());
     mRecyclerView.setAdapter(mProductListAdapter);
-
-
   }
-
-
 
   private void initDataset() {
     // MOCK!!!!
@@ -88,7 +84,6 @@ public class MainActivity extends Activity implements CustomScaleGestureListener
             ProductDetailActivity.VIEW_TRANSITION_HOLDER_PRICE));
 
     //Animation slide = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
-    GUIUtils.hideViewByScale(view.findViewById(R.id.card_price_container));
 
     ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
   }

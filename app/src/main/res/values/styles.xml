@@ -1,8 +1,21 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"></style>
 
-    </style>
+  <style name="CardStyle" parent="CardView">
+    <item name="android:layout_width">@dimen/card_view_width</item>
+    <item name="android:layout_height">@dimen/card_view_height</item>
+    <item name="android:stateListAnimator">@anim/raise_animation</item>
+    <item name="android:layout_marginBottom">@dimen/card_view_margin</item>
+    <item name="android:foreground">@drawable/ripple</item>
+    <item name="cardElevation">@dimen/card_view_elevation</item>
+    <item name="cardCornerRadius">@dimen/card_view_corner_radius</item>
+  </style>
 
+  <style name="FloatingActionButton" parent="android:Widget.Material.Button">
+    <item name="android:stateListAnimator">@anim/raise_animation</item>
+    <item name="android:layout_width">56dp</item>
+    <item name="android:layout_height">56dp</item>
+  </style>
 </resources>

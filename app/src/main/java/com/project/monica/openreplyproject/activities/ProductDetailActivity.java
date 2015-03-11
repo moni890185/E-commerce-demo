@@ -88,7 +88,6 @@ public class ProductDetailActivity extends Activity {
     mTitle.setText(mProduct.getTitle());
   }
 
-
   private void loadBigImage() {
     // TODO insert the big image
     mImage.setImageResource(mProduct.getImageDrawable());

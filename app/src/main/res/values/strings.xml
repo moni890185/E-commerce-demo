@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">E-commerce App</string>
-    <string name="action_settings">Settings</string>
-    <string name="price_card_view">£ 130.00</string>
-    <string name="title_activity_product_detail">ProductDetailActivity</string>
-    <string name="hello_world">Hello world!</string>
+  <string name="app_name">E-commerce App</string>
+  <string name="activity_name_var_list">Product List Variable Size</string>
+  <string name="activity_name_swipe_list">Product List Swipe</string>
+  <string name="activity_name_basic_list">Product List Basic</string>
+  <string name="action_settings">Settings</string>
+  <string name="price_card_view">£ 130.00</string>
+  <string name="title_activity_product_detail">ProductDetailActivity</string>
+  <string name="hello_world">Hello world!</string>
+  <string name="title_activity_home">HomeActivity</string>
+  <string name="title_activity_test">TestActivity</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="title_test_fragment">Choose one of them</string>
 
 </resources>

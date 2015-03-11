@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  android:id="@+id/global_container"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
+
+  <TextView
+    android:id="@+id/swipe_title"
+    android:textColor="@android:color/white"
+    android:textSize="@dimen/font_normal"
+    android:alpha="0.7"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ecru_darkest"
+    tools:text="Title"
+    android:padding="10dp" />
+
+  <View
+    android:id="@+id/swipe_divider_title"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_below="@id/swipe_title"
+    android:background="@color/grey_fab_dark" />
+
+  <ImageView
+    android:id="@+id/swipe_image"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/swipe_divider_title"
+    android:layout_alignWithParentIfMissing="true"
+    android:scaleType="centerCrop"
+    tools:src="@drawable/picture1" />
+
+  <View
+    android:id="@+id/swipe_divider_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_below="@id/swipe_image"
+    android:background="@color/grey_fab_dark" />
+
+  <TextView
+    android:id="@+id/swipe_price"
+    android:background="@color/ecru_darkest"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:padding="10dp"
+    android:alpha="0.7"
+    android:textSize="@dimen/font_smallest"
+    android:layout_below="@id/swipe_divider_bottom"
+    android:gravity="center_vertical"
+    android:textColor="@android:color/white" />
+
+
+</RelativeLayout>

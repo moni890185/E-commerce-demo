@@ -5,5 +5,5 @@ package com.project.monica.openreplyproject.configuration;
  */
 public class DeveloperConstants {
 
-    public static boolean PINCH_ZOOM_FEATURE = false;
+  public static boolean PINCH_ZOOM_FEATURE = false;
 }

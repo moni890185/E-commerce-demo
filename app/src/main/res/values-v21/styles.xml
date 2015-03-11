@@ -1,20 +1,22 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material">
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="android:Theme.Material">
 
     <item name="android:windowContentTransitions">true</item>
-        <!-- Customize your theme here. -->
+    <!-- Customize your theme here. -->
 
-        <item name="android:colorPrimary">@color/action_bar_color</item>
-        <!-- darker variant for the status bar and contextual app bars -->
-        <item name="android:colorPrimaryDark">@color/date_bar_color</item>
+    <item name="android:colorPrimary">@color/action_bar_color</item>
+    <!-- darker variant for the status bar and contextual app bars -->
+    <item name="android:colorPrimaryDark">@color/date_bar_color</item>
 
-        <!-- theme UI controls like checkboxes and text fields -->
-        <item name="android:colorAccent">@android:color/white</item>
+    <!-- theme UI controls like checkboxes and text fields -->
+    <item name="android:colorAccent">@android:color/white</item>
 
-        <item name="android:windowSharedElementEnterTransition">@transition/shared_element_enter_transition</item>
-        <!--<item name="android:windowSharedElementReturnTransition">@transition/shared_element_exit_transition</item>-->
-    </style>
+    <item name="android:windowSharedElementEnterTransition">
+      @transition/shared_element_enter_transition
+    </item>
+    <!--<item name="android:windowSharedElementReturnTransition">@transition/shared_element_exit_transition</item>-->
+  </style>
 
 </resources>

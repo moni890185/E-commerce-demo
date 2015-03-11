@@ -1,28 +1,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:background="@color/background"
+  android:layout_height="match_parent"
+  android:paddingLeft="@dimen/activity_horizontal_margin"
+  android:paddingRight="@dimen/activity_horizontal_margin"
+  android:paddingTop="@dimen/activity_vertical_margin"
+  tools:context=".MainActivity">
+
+  <com.project.monica.openreplyproject.customrecyclerview.AutofitRecyclerView
+    android:id="@+id/recycler_view_product_list"
     android:layout_width="match_parent"
-    android:background="@color/background"
+    android:columnWidth="@dimen/column_width"
+    android:layout_height="match_parent" />
+
+  <!-- transparent view to manage the touch event regarding the pinch zoom feature -->
+  <View
+    android:id="@+id/transparent_view"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
-
-   <com.project.monica.openreplyproject.customrecyclerview.AutofitRecyclerView
-       android:id="@+id/recycler_view_product_list"
-       android:layout_width="match_parent"
-       android:columnWidth="@dimen/column_width"
-       android:layout_height="match_parent"/>
-
-    <!-- transparent view to manage the touch event regarding the pinch zoom feature -->
-    <View
-        android:id="@+id/transparent_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@id/recycler_view_product_list"
-        android:layout_alignBottom="@id/recycler_view_product_list"
-        android:layout_alignRight="@id/recycler_view_product_list"
-        android:layout_alignLeft="@id/recycler_view_product_list"
-        />
+    android:layout_alignTop="@id/recycler_view_product_list"
+    android:layout_alignBottom="@id/recycler_view_product_list"
+    android:layout_alignRight="@id/recycler_view_product_list"
+    android:layout_alignLeft="@id/recycler_view_product_list" />
 
 </RelativeLayout>

@@ -5,7 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
-  tools:context="com.project.monica.snobsinenobilitate.views.activities.NavDrawerActivity"
+  tools:context="com.project.monica.snobsinenobilitate.ui.activities.NavDrawerActivity"
   android:fitsSystemWindows="true">
 
   <include layout="@layout/toolbar" />
@@ -35,7 +35,7 @@
       android:layout_width="@dimen/navigation_drawer_width"
       android:layout_height="match_parent"
       android:layout_gravity="left|start"
-      android:name="com.project.monica.snobsinenobilitate.views.fragments.NavigationDrawerFragment"
+      android:name="com.project.monica.snobsinenobilitate.ui.fragments.NavigationDrawerFragment"
       tools:layout="@layout/fragment_navigation_drawer" />
 
   </android.support.v4.widget.DrawerLayout>

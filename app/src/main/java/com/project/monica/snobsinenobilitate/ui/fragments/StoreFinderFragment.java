@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.views.fragments;
+package com.project.monica.snobsinenobilitate.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,31 +6,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.project.monica.snobsinenobilitate.R;
 
+public class StoreFinderFragment extends BaseFragment {
 
-public class ContactUsFragment extends BaseFragment {
 
-    public static ContactUsFragment newInstance() {
-        ContactUsFragment fragment = new ContactUsFragment();
+    public static StoreFinderFragment newInstance() {
+        StoreFinderFragment fragment = new StoreFinderFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
 
-    public ContactUsFragment() {
+    public StoreFinderFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_contact_us, container, false);
+        return inflater.inflate(R.layout.fragment_store_finder, container, false);
     }
-
-
 
 }

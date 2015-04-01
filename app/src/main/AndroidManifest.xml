@@ -12,7 +12,7 @@
     android:label="@string/app_name"
     android:theme="@style/AppTheme">
     <activity
-      android:name=".views.activities.SplashActivity"
+      android:name=".ui.activities.SplashActivity"
       android:theme="@style/AppSplashTheme"
       android:label="@string/app_name">
       <intent-filter>
@@ -22,15 +22,15 @@
       </intent-filter>
     </activity>
     <activity
-      android:name=".views.activities.NavDrawerActivity"
+      android:name=".ui.activities.NavDrawerActivity"
       android:label="@string/title_activity_nav_drawer"></activity>
     <activity
-      android:name=".views.activities.ProductDetailActivity"
-      android:parentActivityName=".views.activities.NavDrawerActivity"
+      android:name=".ui.activities.ProductDetailActivity"
+      android:parentActivityName=".ui.activities.NavDrawerActivity"
       android:label="@string/title_activity_product_detail">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".views.activities.NavDrawerActivity" />
+        android:value=".ui.activities.NavDrawerActivity" />
     </activity>
   </application>
 

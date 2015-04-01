@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.views.activities;
+package com.project.monica.snobsinenobilitate.ui.activities;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -11,11 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toolbar;
 import com.project.monica.snobsinenobilitate.R;
-import com.project.monica.snobsinenobilitate.views.fragments.ContactUsFragment;
-import com.project.monica.snobsinenobilitate.views.fragments.HomeFragment;
-import com.project.monica.snobsinenobilitate.views.fragments.NavigationDrawerFragment;
-import com.project.monica.snobsinenobilitate.views.fragments.ProductListFragment;
-import com.project.monica.snobsinenobilitate.views.fragments.StoreFinderFragment;
+import com.project.monica.snobsinenobilitate.ui.fragments.ContactUsFragment;
+import com.project.monica.snobsinenobilitate.ui.fragments.HomeFragment;
+import com.project.monica.snobsinenobilitate.ui.fragments.NavigationDrawerFragment;
+import com.project.monica.snobsinenobilitate.ui.fragments.ProductListFragment;
+import com.project.monica.snobsinenobilitate.ui.fragments.StoreFinderFragment;
 
 public class NavDrawerActivity extends FragmentActivity
     implements NavigationDrawerFragment.NavigationDrawerCallbacks,

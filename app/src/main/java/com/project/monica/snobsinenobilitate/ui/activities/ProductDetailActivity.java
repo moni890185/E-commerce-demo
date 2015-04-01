@@ -1,11 +1,11 @@
-package com.project.monica.snobsinenobilitate.views.activities;
+package com.project.monica.snobsinenobilitate.ui.activities;
 
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toolbar;
 import com.project.monica.snobsinenobilitate.R;
-import com.project.monica.snobsinenobilitate.views.fragments.ProductDetailFragment;
+import com.project.monica.snobsinenobilitate.ui.fragments.ProductDetailFragment;
 
 public class ProductDetailActivity extends FragmentActivity implements
     ProductDetailFragment.OnFragmentInteractionListener {

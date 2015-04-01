@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.views.fragments;
+package com.project.monica.snobsinenobilitate.ui.fragments;
 
 import android.support.v4.app.Fragment;
 import com.project.monica.snobsinenobilitate.bus.ScopedBus;

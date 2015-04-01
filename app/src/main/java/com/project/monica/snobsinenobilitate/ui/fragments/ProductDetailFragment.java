@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.views.fragments;
+package com.project.monica.snobsinenobilitate.ui.fragments;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -22,9 +22,9 @@ import com.project.monica.snobsinenobilitate.models.pojo.Color;
 import com.project.monica.snobsinenobilitate.models.pojo.Product;
 import com.project.monica.snobsinenobilitate.models.pojo.Size;
 import com.project.monica.snobsinenobilitate.utils.Logger;
-import com.project.monica.snobsinenobilitate.views.activities.ProductDetailActivity;
-import com.project.monica.snobsinenobilitate.views.adapters.ColorsAdapter;
-import com.project.monica.snobsinenobilitate.views.adapters.SizeAdapter;
+import com.project.monica.snobsinenobilitate.ui.activities.ProductDetailActivity;
+import com.project.monica.snobsinenobilitate.ui.adapters.ColorsAdapter;
+import com.project.monica.snobsinenobilitate.ui.adapters.SizeAdapter;
 import com.squareup.otto.Subscribe;
 import com.squareup.picasso.Picasso;
 import java.util.List;

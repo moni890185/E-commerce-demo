@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.views.fragments;
+package com.project.monica.snobsinenobilitate.ui.fragments;
 
 import android.app.ActionBar;
 import android.app.Activity;

@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.views.fragments;
+package com.project.monica.snobsinenobilitate.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.views.activities;
+package com.project.monica.snobsinenobilitate.ui.activities;
 
 import android.app.Activity;
 import android.content.Intent;

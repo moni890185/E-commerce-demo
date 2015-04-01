@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.views.adapters;
+package com.project.monica.snobsinenobilitate.ui.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;

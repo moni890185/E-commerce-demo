@@ -1,4 +1,4 @@
-package com.project.monica.snobsinenobilitate.views.fragments;
+package com.project.monica.snobsinenobilitate.ui.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import com.project.monica.snobsinenobilitate.bus.events.ProductListContentEvent;
 import com.project.monica.snobsinenobilitate.models.ApiModel;
 import com.project.monica.snobsinenobilitate.models.pojo.Product;
 import com.project.monica.snobsinenobilitate.utils.Logger;
-import com.project.monica.snobsinenobilitate.views.adapters.ProductListAdapter;
+import com.project.monica.snobsinenobilitate.ui.adapters.ProductListAdapter;
 import com.squareup.otto.Subscribe;
 import java.util.List;
 
